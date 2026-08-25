@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | KUSON WANARATMONGKOL</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="STYLE.css" rel="stylesheet">
+
+<style>
+    body {
+        background: radial-gradient(circle at top right, rgba(255,255,255,.04), transparent 35%), #0a0a0a;
+    }
+
+    /* Project Index Row */
+    .project-row {
+        display: grid;
+        grid-template-columns: 56px 1fr 32px;
+        align-items: center;
+        gap: 24px;
+        padding: 34px 4px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        cursor: pointer;
+        transition: .3s ease;
+    }
+    .project-row:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+    .project-row:hover { background: rgba(255,255,255,.025); padding-left: 16px; padding-right: 16px; margin: 0 -16px; }
+
+    @media (min-width: 768px) {
+        .project-row.col-left { padding-right: 20px; }
+        .project-row.col-right { padding-left: 20px; border-left: 1px solid rgba(255,255,255,.08); }
+        .project-row.featured { padding-top: 48px; padding-bottom: 48px; }
+        .project-row.featured .row-top h2 { font-size: 34px; }
+        .project-row.featured .row-summary { font-size: 15px; max-width: 48ch; }
+        .project-row.featured .row-index { font-size: 16px; }
+    }
+    .row-index { font-size: 13px; color: rgba(255,255,255,.3); font-variant-numeric: tabular-nums; letter-spacing: .05em; }
+    .row-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .row-top h2 { font-size: 26px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+    .row-top h2 span { color: rgba(255,255,255,.3); font-weight: 400; }
+    .badge-featured { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #0a0a0a; background: #fff; padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+    .row-chips { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .chip { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.18); padding: 4px 11px; border-radius: 999px; }
+    .row-summary { color: rgba(255,255,255,.5); margin-top: 14px; max-width: 60ch; font-size: 14px; line-height: 1.7; }
+    .row-arrow { font-size: 20px; color: rgba(255,255,255,.3); transition: .3s ease; justify-self: end; }
+    .project-row:hover .row-arrow { color: #fff; transform: translateX(6px); }
+
+    .modal-eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 10px; }
+    .modal-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 28px; }
+
+    @media (max-width: 640px) {
+        .project-row { grid-template-columns: 32px 1fr; }
+        .row-arrow { display: none; }
+        .row-top h2 { font-size: 20px; }
+    }
+
+    /* Modal Styling */
+    .modal {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+        backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+        display: flex; justify-content: center; align-items: center;
+        opacity: 0; pointer-events: none; transition: opacity .4s ease, backdrop-filter .4s ease; z-index: 1000; padding: 20px;
+    }
+    .modal.show { opacity: 1; pointer-events: auto; }
+    .modal-box {
+        width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto;
+        background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 32px; padding: 40px;
+        transform: scale(0.9) translateY(20px); transition: .4s;
+    }
+    .modal.show .modal-box { transform: scale(1) translateY(0); }
+
+    /* Custom Scrollbar for Modal */
+    .modal-box::-webkit-scrollbar { width: 6px; }
+    .modal-box::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+</style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+<div id="scrollProgress"></div>
+<div id="cursor"></div>
+<div id="bg-glow"></div>
+
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
+    <div class="nav-inner relative px-6 lg:px-10 h-[84px] flex items-center justify-center">
+        <a href="index.html" class="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 flex items-center gap-2.5 lg:gap-3 hover:opacity-80 transition">
+            <span class="w-7 h-7 flex items-center justify-center rounded-md border border-white/20 text-[10px] font-bold text-white shrink-0">KW</span>
+            <span class="text-[9px] sm:text-[10px] lg:text-[12px] font-semibold tracking-[0.16em] sm:tracking-[0.2em] lg:tracking-[0.26em] uppercase text-white whitespace-nowrap">KUSON WANARATMONGKOL</span>
+        </a>
+
+        <ul class="hidden lg:flex items-center gap-6 text-[13px] tracking-[0.28em] uppercase">
+            <li><a href="index.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.home">Home</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="awards.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.awards">Awards</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="intern.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.intern">Intern</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="projects.html" class="text-white relative group"><span data-i18n="nav.projects">Projects</span><span class="absolute left-0 -bottom-2 w-full h-[1px] bg-white"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="contact.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.contact">Contact</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+        </ul>
+
+        <div class="absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 flex items-center gap-3">
+            <div class="hidden lg:inline-flex lang-toggle" role="group" aria-label="Language">
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="th">TH</button>
+            </div>
+            <div class="hidden lg:flex items-center gap-1.5 text-[13px] tracking-[0.1em] text-white/50">
+                <span class="nav-status-dot"></span>
+                <span class="clock-time text-white tabular-nums">--:--</span>
+                <span class="text-[10px] text-white/25 uppercase">BKK</span>
+            </div>
+            <button id="menuBtn" class="lg:hidden text-2xl text-white">☰</button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="lg:hidden border-t border-white/10 bg-black/95">
+        <div class="px-6 py-8 flex flex-col gap-6 text-[13px] tracking-[0.28em] uppercase">
+            <a href="index.html" class="text-white/50" data-i18n="nav.home">Home</a>
+            <a href="awards.html" class="text-white/50" data-i18n="nav.awards">Awards</a>
+            <a href="intern.html" class="text-white/50" data-i18n="nav.intern">Intern</a>
+            <a href="projects.html" class="text-white" aria-current="page" data-i18n="nav.projects">Projects</a>
+            <a href="contact.html" class="text-white/50" data-i18n="nav.contact">Contact</a>
+        </div>
+        <div id="mobileMenu-status">
+            <span class="nav-status-dot"></span>
+            <span class="availability-text">Available for Work</span>
+            <span class="text-white/25">—</span>
+            <span class="clock-time text-white tabular-nums">--:--</span>
+            <span class="text-white/25 text-[10px] uppercase">BKK</span>
+        </div>
+        <div class="px-6 pb-6 flex justify-center">
+            <div class="lang-toggle" role="group" aria-label="Language">
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="th">TH</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header class="py-24 px-6 border-b border-white/10">
+    <div class="max-w-6xl mx-auto">
+        <div class="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] tracking-widest uppercase mb-6 fade-up text-white/40" data-i18n="header.pill">Premium Interactive Portfolio</div>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tighter fade-up uppercase leading-[1.1]" data-i18n="header.title">Selected<br>Projects</h1>
+        <p class="text-white/50 mt-8 max-w-2xl fade-up leading-relaxed text-lg" data-i18n="header.subtext">
+            A collection of digital experiences, bridging the gap between creativity and technical execution.
+        </p>
+    </div>
+</header>
+
+<main class="flex-grow max-w-6xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2">
+    <div class="project-row fade-up featured md:col-span-2" onclick="openProject(1)">
+        <div class="row-index">01</div>
+        <div>
+            <div class="row-top">
+                <h2>Digital Portfolio <span>— Website</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip" data-i18n="chip.branding">Branding</span>
+                <span class="chip" data-i18n="chip.webDev">Web Dev</span>
+            </div>
+            <p class="row-summary" data-i18n="row2.summary">A high-end personal platform featuring cinematic motion effects.</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-left" onclick="openProject(4)">
+        <div class="row-index">02</div>
+        <div>
+            <div class="row-top">
+                <h2>New's Flow <span>— Web App</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip">Vanilla JS</span>
+                <span class="chip" data-i18n="chip.aiSummarization">AI Summarization</span>
+                <span class="chip" data-i18n="chip.bilingual">Bilingual</span>
+            </div>
+            <p class="row-summary" data-i18n="row5.summary">A bilingual AI news aggregator pulling live headlines from five Thai outlets, with instant AI-generated summaries.</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-right" onclick="openProject(0)">
+        <div class="row-index">03</div>
+        <div>
+            <div class="row-top">
+                <h2>Cave Heist <span>— VR Exhibition</span></h2>
+                <span class="badge-featured" data-i18n="badge.flagship">Flagship</span>
+            </div>
+            <div class="row-chips">
+                <span class="chip">Unity</span>
+                <span class="chip">VR Cardboard</span>
+            </div>
+            <p class="row-summary" data-i18n="row1.summary">Interactive VR showcase experience designed for high engagement.</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-left" onclick="openProject(2)">
+        <div class="row-index">04</div>
+        <div>
+            <div class="row-top">
+                <h2>Business Solutions <span>— Client Work</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip" data-i18n="chip.clientWork">Client Work</span>
+                <span class="chip" data-i18n="chip.commercialWork">Commercial Work</span>
+            </div>
+            <p class="row-summary" data-i18n="row3.summary">Developing digital identities for professional organizations.</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-right" onclick="openProject(3)">
+        <div class="row-index">05</div>
+        <div>
+            <div class="row-top">
+                <h2>Booking System <span>— Internal Platform</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip" data-i18n="chip.internalPlatform">Internal Platform</span>
+                <span class="chip" data-i18n="chip.systemDesign">System Design</span>
+            </div>
+            <p class="row-summary" data-i18n="row4.summary">Streamlining management through automated reservation logic.</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-left" onclick="openProject(5)">
+        <div class="row-index">06</div>
+        <div>
+            <div class="row-top">
+                <h2>GRITT Discipline <span>— [Project Type]</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip">[Tech Stack]</span>
+            </div>
+            <p class="row-summary" data-i18n="row6.summary">[Placeholder summary — describe what this project does and its impact.]</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-right" onclick="openProject(6)">
+        <div class="row-index">07</div>
+        <div>
+            <div class="row-top">
+                <h2>NAS Website <span>— Client Work</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip" data-i18n="chip.webDev">Web Dev</span>
+                <span class="chip" data-i18n="chip.clientWork">Client Work</span>
+            </div>
+            <p class="row-summary" data-i18n="row7.summary">Company website built for NAS Innovation Co., Ltd. during the front-end internship.</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-left" onclick="openProject(7)">
+        <div class="row-index">08</div>
+        <div>
+            <div class="row-top">
+                <h2>OUAD CHUM Resort Website <span>— Client Work</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip" data-i18n="chip.webDev">Web Dev</span>
+                <span class="chip" data-i18n="chip.clientWork">Client Work</span>
+            </div>
+            <p class="row-summary" data-i18n="row8.summary">[Placeholder summary — describe the resort website and its key features.]</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+
+    <div class="project-row fade-up col-right" onclick="openProject(8)">
+        <div class="row-index">09</div>
+        <div>
+            <div class="row-top">
+                <h2>PRASARN MIT + <span>— [Project Type]</span></h2>
+            </div>
+            <div class="row-chips">
+                <span class="chip">[Tech Stack]</span>
+            </div>
+            <p class="row-summary" data-i18n="row9.summary">[Placeholder summary — describe what this project does and its impact.]</p>
+        </div>
+        <div class="row-arrow">→</div>
+    </div>
+    </div>
+</main>
+
+<footer class="border-t border-white/10 py-12 text-center text-white/20 text-[10px] tracking-[0.4em] uppercase">
+    © 2026 KUSON WANARATMONGKOL
+</footer>
+
+<div id="modal" class="modal" onclick="if(event.target==this) closeModal()">
+    <div class="modal-box relative">
+        <button onclick="closeModal()" class="absolute top-8 right-8 text-2xl opacity-40 hover:opacity-100 transition">✕</button>
+        
+        <div id="heroImage" class="w-full h-64 md:h-80 bg-white/5 rounded-2xl overflow-hidden mb-8 flex items-center justify-center text-white/20 border border-white/10">
+            </div>
+
+        <div id="modalEyebrow" class="modal-eyebrow"></div>
+        <h2 id="modalTitle" class="text-4xl font-bold mb-0"></h2>
+        <div id="modalTag" class="modal-chips"></div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="md:col-span-2">
+                <h3 class="text-[11px] tracking-widest uppercase text-white/30 mb-4" data-i18n="modal.overview">Overview</h3>
+                <p id="modalDesc" class="text-white/70 leading-relaxed text-[15px]"></p>
+            </div>
+            <div>
+                <h3 class="text-[11px] tracking-widest uppercase text-white/30 mb-4" data-i18n="modal.myRole">My Role</h3>
+                <p id="modalRole" class="text-white/70 text-[15px]"></p>
+            </div>
+        </div>
+
+        <div class="mt-12">
+            <h3 class="text-[11px] tracking-widest uppercase text-white/30 mb-6" data-i18n="modal.gallery">Project Gallery</h3>
+            <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.I18N_PAGE = {
+    en: {
+        "header.pill": "Premium Interactive Portfolio",
+        "header.title": "Selected<br>Projects",
+        "header.subtext": "A collection of digital experiences, bridging the gap between creativity and technical execution.",
+        "badge.flagship": "Flagship",
+        "row1.summary": "Interactive VR showcase experience designed for high engagement.",
+        "row2.summary": "A high-end personal platform featuring cinematic motion effects.",
+        "row3.summary": "Developing digital identities for professional organizations.",
+        "row4.summary": "Streamlining management through automated reservation logic.",
+        "row5.summary": "A bilingual AI news aggregator pulling live headlines from five Thai outlets, with instant AI-generated summaries.",
+        "row6.summary": "[Placeholder summary — describe what this project does and its impact.]",
+        "row7.summary": "Company website built for NAS Innovation Co., Ltd. during the front-end internship.",
+        "row8.summary": "[Placeholder summary — describe the resort website and its key features.]",
+        "row9.summary": "[Placeholder summary — describe what this project does and its impact.]",
+        "chip.branding": "Branding",
+        "chip.webDev": "Web Dev",
+        "chip.clientWork": "Client Work",
+        "chip.commercialWork": "Commercial Work",
+        "chip.internalPlatform": "Internal Platform",
+        "chip.systemDesign": "System Design",
+        "chip.aiSummarization": "AI Summarization",
+        "chip.bilingual": "Bilingual",
+        "modal.overview": "Overview",
+        "modal.myRole": "My Role",
+        "modal.gallery": "Project Gallery",
+        "modal.caseStudy": "Case Study"
+    },
+    th: {
+        "header.pill": "พอร์ตโฟลิโอเชิงโต้ตอบระดับพรีเมียม",
+        "header.title": "ผลงาน<br>ที่คัดสรร",
+        "header.subtext": "คอลเลกชันประสบการณ์ดิจิทัลที่เชื่อมช่องว่างระหว่างความคิดสร้างสรรค์และการปฏิบัติงานเชิงเทคนิค",
+        "badge.flagship": "ผลงานเด่น",
+        "row1.summary": "ประสบการณ์ VR แบบอินเทอร์แอกทีฟที่ออกแบบมาเพื่อสร้างการมีส่วนร่วมสูง",
+        "row2.summary": "แพลตฟอร์มส่วนตัวระดับไฮเอนด์ที่มีเอฟเฟกต์การเคลื่อนไหวสไตล์ภาพยนตร์",
+        "row3.summary": "พัฒนาอัตลักษณ์ดิจิทัลสำหรับองค์กรมืออาชีพ",
+        "row4.summary": "เพิ่มประสิทธิภาพการบริหารจัดการด้วยระบบจองอัตโนมัติ",
+        "row5.summary": "แอปรวมข่าวสองภาษาที่ดึงหัวข้อข่าวสดจาก 5 สำนักข่าวไทย พร้อมสรุปข่าวด้วย AI ทันที",
+        "row6.summary": "[คำอธิบายเบื้องต้น — โปรเจกต์นี้ทำอะไรและมีผลกระทบอย่างไร]",
+        "row7.summary": "เว็บไซต์บริษัทที่พัฒนาให้กับ NAS Innovation Co., Ltd. ระหว่างการฝึกงานสาย Front-end",
+        "row8.summary": "[คำอธิบายเบื้องต้น — เว็บไซต์รีสอร์ทและฟีเจอร์หลัก]",
+        "row9.summary": "[คำอธิบายเบื้องต้น — โปรเจกต์นี้ทำอะไรและมีผลกระทบอย่างไร]",
+        "chip.branding": "การสร้างแบรนด์",
+        "chip.webDev": "พัฒนาเว็บไซต์",
+        "chip.clientWork": "งานลูกค้า",
+        "chip.commercialWork": "งานเชิงพาณิชย์",
+        "chip.internalPlatform": "แพลตฟอร์มภายใน",
+        "chip.systemDesign": "การออกแบบระบบ",
+        "chip.aiSummarization": "สรุปข่าวด้วย AI",
+        "chip.bilingual": "สองภาษา",
+        "modal.overview": "ภาพรวม",
+        "modal.myRole": "บทบาทของฉัน",
+        "modal.gallery": "แกลเลอรีผลงาน",
+        "modal.caseStudy": "กรณีศึกษา"
+    }
+};
+
+function T(key) {
+    return window.I18N_PAGE[getLang()][key];
+}
+</script>
+<script src="main.js"></script>
+<script>
+    // Modal Logic
+    const PROJECTS = [
+        {
+            title: "Cave Heist – VR Exhibition",
+            chips: ["Unity", "VR Cardboard"],
+            hero: "images/cave-main.jpg",
+            desc: { en: "Immersive VR exhibition game built for Open House 2026. Designed to attract visitors and demonstrate innovation.", th: "เกม VR สำหรับงานเปิดบ้าน Open House 2026 ออกแบบมาเพื่อดึงดูดผู้เข้าชมและแสดงศักยภาพด้านนวัตกรรม" },
+            role: { en: "Team Leader • Developer", th: "หัวหน้าทีม • นักพัฒนา" },
+            gallery: ["images/cave1.jpg", "images/cave2.jpg"]
+        },
+        {
+            title: "Digital Portfolio Website",
+            chips: ["Branding", "Web Dev"],
+            hero: "images/portfolio-main.jpg",
+            desc: { en: "Personal portfolio built for university admissions, freelance work, and brand identity.", th: "พอร์ตโฟลิโอส่วนตัวที่สร้างขึ้นสำหรับการสมัครเข้ามหาวิทยาลัย งานฟรีแลนซ์ และอัตลักษณ์แบรนด์" },
+            role: { en: "UI/UX • Frontend", th: "UI/UX • Frontend" },
+            gallery: ["images/port1.jpg", "images/port2.jpg"]
+        },
+        {
+            title: "Business Solutions",
+            chips: ["Client Work", "Commercial Work"],
+            hero: "images/business-main.jpg",
+            desc: { en: "Real-world business websites for professional clients and branding.", th: "เว็บไซต์ธุรกิจจริงสำหรับลูกค้ามืออาชีพและงานสร้างแบรนด์" },
+            role: { en: "Web Designer", th: "นักออกแบบเว็บไซต์" },
+            gallery: ["images/b1.jpg", "images/b2.jpg"]
+        },
+        {
+            title: "Booking System",
+            chips: ["Internal Platform", "System Design"],
+            hero: "images/booking-main.jpg",
+            desc: { en: "Booking platform for scheduling rooms and improving internal workflow.", th: "แพลตฟอร์มจองห้องสำหรับจัดตารางเวลาและปรับปรุงขั้นตอนการทำงานภายในองค์กร" },
+            role: { en: "Planner • Developer", th: "ผู้วางแผน • นักพัฒนา" },
+            gallery: ["images/book1.jpg"]
+        },
+        {
+            title: "New's Flow",
+            chips: ["Vanilla JS", "AI Summarization", "Bilingual"],
+            hero: "images/ai-news-main.jpg",
+            desc: { en: "A bilingual (Thai/English) news web app that aggregates live headlines from five major Thai outlets — Thairath, Sanook, Khaosod, Kapook, and Matichon — in parallel, then generates an instant AI summary of any article in a formal, bullet-point format.", th: "เว็บแอปข่าวสองภาษา (ไทย/อังกฤษ) ที่รวบรวมหัวข้อข่าวสดจาก 5 สำนักข่าวไทย — ไทยรัฐ, สนุก, ข่าวสด, กระปุก และมติชน — พร้อมกัน แล้วสรุปข่าวด้วย AI ทันทีในรูปแบบทางการเป็นข้อๆ" },
+            role: { en: "Solo Developer", th: "นักพัฒนาเดี่ยว" },
+            gallery: ["images/ai-news1.jpg", "images/ai-news2.jpg"]
+        },
+        {
+            title: "GRITT Discipline",
+            chips: ["[Tech Stack]"],
+            hero: "images/gritt-main.jpg",
+            desc: { en: "[Placeholder description — what GRITT Discipline is and the problem it solves.]", th: "[คำอธิบายเบื้องต้น — GRITT Discipline คืออะไรและแก้ปัญหาอะไร]" },
+            role: { en: "[Role]", th: "[บทบาท]" },
+            gallery: ["images/gritt1.jpg"]
+        },
+        {
+            title: "NAS Website",
+            chips: ["Web Dev", "Client Work"],
+            hero: "images/nas-main.jpg",
+            desc: { en: "Company website built for NAS Innovation Co., Ltd. during the front-end internship.", th: "เว็บไซต์บริษัทที่พัฒนาให้กับ NAS Innovation Co., Ltd. ระหว่างการฝึกงานสาย Front-end" },
+            role: { en: "Front-end Developer", th: "นักพัฒนา Front-end" },
+            gallery: ["images/nas1.jpg"]
+        },
+        {
+            title: "OUAD CHUM Resort Website",
+            chips: ["Web Dev", "Client Work"],
+            hero: "images/ouadchum-main.jpg",
+            desc: { en: "[Placeholder description — resort website built for the client, key features and goals.]", th: "[คำอธิบายเบื้องต้น — เว็บไซต์รีสอร์ทที่พัฒนาให้ลูกค้า ฟีเจอร์และเป้าหมายหลัก]" },
+            role: { en: "[Role]", th: "[บทบาท]" },
+            gallery: ["images/ouadchum1.jpg"]
+        },
+        {
+            title: "PRASARN MIT +",
+            chips: ["[Tech Stack]"],
+            hero: "images/prasarnmit-main.jpg",
+            desc: { en: "[Placeholder description — what PRASARN MIT + is and the problem it solves.]", th: "[คำอธิบายเบื้องต้น — PRASARN MIT + คืออะไรและแก้ปัญหาอะไร]" },
+            role: { en: "[Role]", th: "[บทบาท]" },
+            gallery: ["images/prasarnmit1.jpg"]
+        }
+    ];
+
+    const CHIP_TRANSLATIONS = {
+        th: {
+            "Branding": "การสร้างแบรนด์",
+            "Web Dev": "พัฒนาเว็บไซต์",
+            "Client Work": "งานลูกค้า",
+            "Commercial Work": "งานเชิงพาณิชย์",
+            "Internal Platform": "แพลตฟอร์มภายใน",
+            "System Design": "การออกแบบระบบ",
+            "AI Summarization": "สรุปข่าวด้วย AI",
+            "Bilingual": "สองภาษา"
+        }
+    };
+
+    function chipLabel(chip) {
+        const lang = getLang();
+        return (CHIP_TRANSLATIONS[lang] && CHIP_TRANSLATIONS[lang][chip]) || chip;
+    }
+
+    function openProject(index) {
+        const project = PROJECTS[index];
+        const lang = getLang();
+
+        document.getElementById("modalEyebrow").innerText = T("modal.caseStudy") + " 0" + (index + 1);
+        document.getElementById("modalTitle").innerText = project.title;
+        document.getElementById("modalTag").innerHTML = project.chips.map(c => `<span class="chip">${chipLabel(c)}</span>`).join("");
+        document.getElementById("modalDesc").innerText = project.desc[lang];
+        document.getElementById("modalRole").innerText = project.role[lang];
+
+        document.getElementById("heroImage").innerHTML = `<img src="${project.hero}" class="w-full h-full object-cover" onerror="this.remove();">`;
+
+        let galleryHTML = "";
+        project.gallery.forEach(src => {
+            galleryHTML += `
+                <div class="aspect-video bg-white/5 rounded-xl border border-white/10 overflow-hidden">
+                    <img src="${src}" class="w-full h-full object-cover" onerror="this.remove();">
+                </div>`;
+        });
+        document.getElementById("gallery").innerHTML = galleryHTML;
+
+        document.getElementById("modal").classList.add("show");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").classList.remove("show");
+        document.body.style.overflow = "auto";
+    }
+
+</script>
+
+</body>
+</html>

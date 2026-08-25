@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuson Portfolio | Home</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="STYLE.css" rel="stylesheet">
+
+<style>
+body{
+    background:#0a0a0a;
+}
+
+/* Noise */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity:.03;
+    pointer-events:none;
+    z-index:9999;
+}
+
+/* Loader */
+#loader{
+    position:fixed;
+    inset:0;
+    background:#0a0a0a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10000;
+    transition:opacity .6s ease, visibility .6s;
+}
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-bar{
+    width:260px;
+    height:2px;
+    background:rgba(255,255,255,.1);
+    margin:30px auto 10px;
+    overflow:hidden;
+}
+#progress{
+    height:100%;
+    width:0%;
+    background:white;
+    transition:.15s;
+}
+
+/* Grid */
+.grid-bg{
+    background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size:50px 50px;
+    position:relative;
+}
+
+/* Navbar */
+nav{
+    backdrop-filter:blur(16px);
+}
+
+/* Cards */
+.core-card{
+    background:rgba(255,255,255,.02);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+}
+.core-card:hover{
+    background:rgba(255,255,255,.05);
+    border-color:rgba(255,255,255,.3);
+    transform:translateY(-5px);
+}
+
+.glow-btn:hover{
+    box-shadow:0 0 20px rgba(255,255,255,.2);
+    background:white;
+    color:black;
+}
+</style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+<div id="scrollProgress"></div>
+
+<!-- LOADER -->
+<div id="loader">
+<div class="text-center">
+<div class="text-3xl tracking-[0.5em] mb-2 font-semibold">KUSON</div>
+<div class="loader-bar"><div id="progress"></div></div>
+<div class="text-[10px] tracking-[0.3em] opacity-40"><span id="percent">0</span>% <span data-i18n="loader.loading">LOADING</span></div>
+</div>
+</div>
+
+<div id="cursor"></div>
+<div id="bg-glow"></div>
+
+<!-- NAVBAR -->
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-black/55 backdrop-blur-xl">
+
+<div class="nav-inner relative px-6 lg:px-10 h-[84px] flex items-center justify-center">
+
+<a href="index.html" class="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 flex items-center gap-2.5 lg:gap-3 hover:opacity-80 transition">
+<span class="w-7 h-7 flex items-center justify-center rounded-md border border-white/20 text-[10px] font-bold text-white shrink-0">KW</span>
+<span class="text-[9px] sm:text-[10px] lg:text-[12px] font-semibold tracking-[0.16em] sm:tracking-[0.2em] lg:tracking-[0.26em] uppercase text-white whitespace-nowrap">KUSON WANARATMONGKOL</span>
+</a>
+
+<ul class="hidden lg:flex items-center gap-6 text-[13px] tracking-[0.28em] uppercase">
+
+<li>
+<a href="index.html" class="text-white relative group">
+<span data-i18n="nav.home">Home</span>
+<span class="absolute left-0 -bottom-2 w-full h-[1px] bg-white"></span>
+</a>
+</li>
+
+<li aria-hidden="true" class="text-white/25 select-none">·</li>
+
+<li>
+<a href="awards.html" class="text-white/55 hover:text-white transition relative group">
+<span data-i18n="nav.awards">Awards</span>
+<span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+</a>
+</li>
+
+<li aria-hidden="true" class="text-white/25 select-none">·</li>
+
+<li>
+<a href="intern.html" class="text-white/55 hover:text-white transition relative group">
+<span data-i18n="nav.intern">Intern</span>
+<span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+</a>
+</li>
+
+<li aria-hidden="true" class="text-white/25 select-none">·</li>
+
+<li>
+<a href="projects.html" class="text-white/55 hover:text-white transition relative group">
+<span data-i18n="nav.projects">Projects</span>
+<span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+</a>
+</li>
+
+<li aria-hidden="true" class="text-white/25 select-none">·</li>
+
+<li>
+<a href="contact.html" class="text-white/55 hover:text-white transition relative group">
+<span data-i18n="nav.contact">Contact</span>
+<span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+</a>
+</li>
+
+</ul>
+
+<div class="absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 flex items-center gap-3">
+<div class="hidden lg:inline-flex lang-toggle" role="group" aria-label="Language">
+<button type="button" class="lang-btn" data-lang="en">EN</button>
+<button type="button" class="lang-btn" data-lang="th">TH</button>
+</div>
+<div class="hidden lg:flex items-center gap-1.5 text-[13px] tracking-[0.1em] text-white/50">
+<span class="nav-status-dot"></span>
+<span class="clock-time text-white tabular-nums">--:--</span>
+<span class="text-[10px] text-white/25 uppercase">BKK</span>
+</div>
+<button id="menuBtn" class="lg:hidden text-2xl text-white">☰</button>
+</div>
+
+</div>
+
+<div id="mobileMenu" class="lg:hidden border-t border-white/10 bg-black/90">
+<div class="px-6 py-6 flex flex-col gap-5 text-[13px] tracking-[0.28em] uppercase">
+<a href="index.html" class="text-white" aria-current="page" data-i18n="nav.home">Home</a>
+<a href="awards.html" class="text-white/60 hover:text-white transition" data-i18n="nav.awards">Awards</a>
+<a href="intern.html" class="text-white/60 hover:text-white transition" data-i18n="nav.intern">Intern</a>
+<a href="projects.html" class="text-white/60 hover:text-white transition" data-i18n="nav.projects">Projects</a>
+<a href="contact.html" class="text-white/60 hover:text-white transition" data-i18n="nav.contact">Contact</a>
+</div>
+<div id="mobileMenu-status">
+<span class="nav-status-dot"></span>
+<span class="availability-text">Available for Work</span>
+<span class="text-white/25">—</span>
+<span class="clock-time text-white tabular-nums">--:--</span>
+<span class="text-white/25 text-[10px] uppercase">BKK</span>
+</div>
+<div class="px-6 pb-6 flex justify-center">
+<div class="lang-toggle" role="group" aria-label="Language">
+<button type="button" class="lang-btn" data-lang="en">EN</button>
+<button type="button" class="lang-btn" data-lang="th">TH</button>
+</div>
+</div>
+</div>
+
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="relative min-h-[90vh] flex items-center grid-bg overflow-hidden">
+
+<div class="max-w-6xl mx-auto px-6 py-20 relative z-10">
+
+<h1 class="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight tracking-tighter fade-up">
+Kuson <br>
+<span id="typing" class="text-white/40 border-r-2 border-white/40 pr-2"></span>
+</h1>
+
+<p class="mt-8 max-w-xl text-white/50 text-lg leading-relaxed fade-up" data-i18n="hero.subhead">
+I'm someone passionate about the point where technology, art, and business converge — I see every idea through the eyes of a creator, and bring it to life with the spirit of an entrepreneur. Not just a career, but a way of life.
+</p>
+
+<div class="flex flex-wrap gap-6 mt-12 fade-up">
+<a href="projects.html" class="glow-btn px-10 py-4 border border-white/20 uppercase tracking-[0.3em] text-[12px] transition duration-300" data-i18n="hero.viewProjects">
+View Projects
+</a>
+
+<a href="awards.html" class="px-10 py-4 text-white/40 hover:text-white uppercase tracking-[0.3em] text-[12px] transition duration-300" data-i18n="hero.awardsCerts">
+Awards & Certs
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- SECTION -->
+<section class="py-32 px-6 border-t border-white/5 relative z-10">
+<div class="max-w-6xl mx-auto">
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+<div class="core-card p-10 rounded-2xl fade-up">
+<div class="text-white/30 mb-6 text-sm tracking-widest uppercase" data-i18n="feature.oneLabel">01 / Creativity</div>
+<h3 class="text-2xl mb-4" data-i18n="feature.oneTitle">Design Logic</h3>
+<p class="text-white/50 text-sm leading-relaxed" data-i18n="feature.oneDesc">
+Crafting immersive UI/UX with Figma and AI-driven image generation.
+</p>
+</div>
+
+<div class="core-card p-10 rounded-2xl fade-up">
+<div class="text-white/30 mb-6 text-sm tracking-widest uppercase" data-i18n="feature.twoLabel">02 / Engineering</div>
+<h3 class="text-2xl mb-4" data-i18n="feature.twoTitle">Tech Solutions</h3>
+<p class="text-white/50 text-sm leading-relaxed" data-i18n="feature.twoDesc">
+Exploring AR/NFC integrations and VR development using Unity and C#.
+</p>
+</div>
+
+<div class="core-card p-10 rounded-2xl fade-up">
+<div class="text-white/30 mb-6 text-sm tracking-widest uppercase" data-i18n="feature.threeLabel">03 / Strategy</div>
+<h3 class="text-2xl mb-4" data-i18n="feature.threeTitle">Development</h3>
+<p class="text-white/50 text-sm leading-relaxed" data-i18n="feature.threeDesc">
+Building scalable web applications with clean code and performance.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- COUNTER -->
+<section class="py-20 border-y border-white/5 bg-white/[0.01]">
+<div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+
+<div>
+<div class="text-4xl font-bold mb-2 counter" data-target="9">0</div>
+<div class="text-[10px] tracking-widest uppercase text-white/30" data-i18n="counter.projects">Projects Done</div>
+</div>
+
+<div>
+<div class="text-4xl font-bold mb-2 counter" data-target="4">0</div>
+<div class="text-[10px] tracking-widest uppercase text-white/30" data-i18n="counter.awards">Major Awards</div>
+</div>
+
+<div>
+<div class="text-4xl font-bold mb-2 counter" data-target="7">0</div>
+<div class="text-[10px] tracking-widest uppercase text-white/30" data-i18n="counter.certs">Certifications</div>
+</div>
+
+<div>
+<div class="text-4xl font-bold mb-2">2026</div>
+<div class="text-[10px] tracking-widest uppercase text-white/30" data-i18n="counter.focus">Active Focus</div>
+</div>
+
+</div>
+</section>
+
+<footer class="py-12 text-center text-white/20 text-[10px] tracking-[0.4em] uppercase">
+© 2026 KUSON WANARATMONGKOL — <span data-i18n="footer.tagline">Turn Vision into Reality</span>
+</footer>
+
+<script>
+window.I18N_PAGE = {
+    en: {
+        "hero.subhead": "I'm someone passionate about the point where technology, art, and business converge — I see every idea through the eyes of a creator, and bring it to life with the spirit of an entrepreneur. Not just a career, but a way of life.",
+        "hero.viewProjects": "View Projects",
+        "hero.awardsCerts": "Awards & Certs",
+        "feature.oneLabel": "01 / Creativity",
+        "feature.oneTitle": "Design Logic",
+        "feature.oneDesc": "Crafting immersive UI/UX with Figma and AI-driven image generation.",
+        "feature.twoLabel": "02 / Engineering",
+        "feature.twoTitle": "Tech Solutions",
+        "feature.twoDesc": "Exploring AR/NFC integrations and VR development using Unity and C#.",
+        "feature.threeLabel": "03 / Strategy",
+        "feature.threeTitle": "Development",
+        "feature.threeDesc": "Building scalable web applications with clean code and performance.",
+        "counter.projects": "Projects Done",
+        "counter.awards": "Major Awards",
+        "counter.certs": "Certifications",
+        "counter.focus": "Active Focus",
+        "loader.loading": "LOADING"
+    },
+    th: {
+        "hero.subhead": "ผมผู้หลงใหลในจุดที่เทคโนโลยี ศิลปะ และธุรกิจสามารถมาบรรจบกันได้ เเละมองทุกไอเดียด้วยสายตาของนักสร้างสรรค์ และลงมือทำให้เป็นจริงด้วยจิตวิญญาณของผู้ประกอบการ \"ไม่ใช่แค่อาชีพ แต่คือวิถีชีวิต\"",
+        "hero.viewProjects": "ดูผลงาน",
+        "hero.awardsCerts": "รางวัลและใบรับรอง",
+        "feature.oneLabel": "01 / ความคิดสร้างสรรค์",
+        "feature.oneTitle": "ตรรกะการออกแบบ",
+        "feature.oneDesc": "สร้างสรรค์ UI/UX ที่ดื่มด่ำด้วย Figma และการสร้างภาพด้วย AI",
+        "feature.twoLabel": "02 / วิศวกรรม",
+        "feature.twoTitle": "โซลูชันเทคโนโลยี",
+        "feature.twoDesc": "สำรวจการผสาน AR/NFC และพัฒนา VR ด้วย Unity และ C#",
+        "feature.threeLabel": "03 / กลยุทธ์",
+        "feature.threeTitle": "การพัฒนา",
+        "feature.threeDesc": "พัฒนาเว็บแอปพลิเคชันที่ขยายขนาดได้ด้วยโค้ดที่สะอาดและประสิทธิภาพสูง",
+        "counter.projects": "โปรเจกต์ที่เสร็จสิ้น",
+        "counter.awards": "รางวัลสำคัญ",
+        "counter.certs": "ใบรับรอง",
+        "counter.focus": "โฟกัสปัจจุบัน",
+        "loader.loading": "กำลังโหลด"
+    }
+};
+
+const TYPING_WORDS = {
+    en: ["Portfolio", "Innovation", "Development", "Exploration"],
+    th: ["พอร์ตโฟลิโอ", "นวัตกรรม", "การพัฒนา", "การสำรวจ"]
+};
+</script>
+<script src="main.js"></script>
+<script>
+/* Loader */
+const loader = document.getElementById("loader");
+
+if(sessionStorage.getItem("visited")){
+loader.style.display = "none";
+}else{
+sessionStorage.setItem("visited","true");
+
+let percent = 0;
+const progress = document.getElementById("progress");
+const percentText = document.getElementById("percent");
+
+const loading = setInterval(()=>{
+percent += Math.floor(Math.random()*10)+1;
+if(percent > 100) percent = 100;
+
+progress.style.width = percent + "%";
+percentText.innerText = percent;
+
+if(percent >= 100){
+clearInterval(loading);
+setTimeout(()=>loader.classList.add("hide"),400);
+}
+},50);
+}
+
+/* Counters */
+const counterObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting) startCounter(entry.target);
+});
+},{threshold:.1});
+
+document.querySelectorAll(".counter").forEach(el=>counterObserver.observe(el));
+
+function startCounter(el){
+const target = +el.dataset.target;
+let count = 0;
+
+function update(){
+const speed = target / 20;
+
+if(count < target){
+count += speed;
+el.innerText = Math.ceil(count);
+setTimeout(update,50);
+}else{
+el.innerText = target;
+}
+}
+update();
+}
+
+/* Typing */
+let typingGen = 0;
+let wordIdx = 0;
+let charIdx = 0;
+let deleting = false;
+const typingEl = document.getElementById("typing");
+
+function type(myGen){
+if(myGen !== typingGen) return;
+const words = TYPING_WORDS[getLang()];
+const current = words[wordIdx % words.length];
+
+if(deleting){
+typingEl.innerText = current.substring(0,charIdx-1);
+charIdx--;
+}else{
+typingEl.innerText = current.substring(0,charIdx+1);
+charIdx++;
+}
+
+let speed = deleting ? 50 : 100;
+
+if(!deleting && charIdx === current.length){
+deleting = true;
+speed = 1800;
+}else if(deleting && charIdx === 0){
+deleting = false;
+wordIdx = (wordIdx+1)%words.length;
+speed = 500;
+}
+
+setTimeout(()=>type(myGen),speed);
+}
+type(typingGen);
+
+document.addEventListener("language:changed", () => {
+typingGen++;
+wordIdx = 0;
+charIdx = 0;
+deleting = false;
+type(typingGen);
+});
+
+/* Hero Parallax */
+const hero = document.getElementById("hero");
+
+hero.addEventListener("mousemove",(e)=>{
+const x = (window.innerWidth/2 - e.pageX)/60;
+const y = (window.innerHeight/2 - e.pageY)/60;
+
+hero.querySelector("div").style.transform = `translate(${x}px,${y}px)`;
+});
+
+</script>
+
+</body>
+</html>

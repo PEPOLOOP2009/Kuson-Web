@@ -1,0 +1,322 @@
+/* ===================================== */
+/* GLOBAL PROFESSIONAL MINIMAL THEME */
+/* ===================================== */
+
+:root {
+    --bg-primary: #0b0b0f;
+    --bg-secondary: #121218;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --glow-soft: rgba(255, 255, 255, 0.15);
+    --nav-height: 84px; /* กำหนดความสูงมาตรฐานเพื่อให้ทุกหน้าเท่ากัน */
+    --x: 50%;
+    --y: 50%;
+}
+
+/* ===================================== */
+/* BASE */
+/* ===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    overflow-x: hidden;
+    line-height: 1.6;
+    transition: opacity .3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: white;
+    z-index: 9999;
+}
+
+/* Cursor Glow: shared mouse-follow dot + ambient light, standardized site-wide */
+#bg-glow {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--x) var(--y), rgba(255, 255, 255, .06), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Global Grid Background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ===================================== */
+/* NAVIGATION */
+/* ===================================== */
+
+nav {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+}
+
+nav a, nav span {
+    position: relative;
+    color: var(--text-secondary);
+    transition: all .3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: var(--text-primary);
+}
+
+/* Active State & Underline */
+nav a.active, nav span.active {
+    color: var(--text-primary);
+    pointer-events: none;
+    cursor: default;
+}
+
+/* ===================================== */
+/* NAV SCROLL SHRINK */
+/* ===================================== */
+
+nav {
+    transition: background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+}
+
+.nav-inner {
+    transition: height .35s ease;
+}
+
+nav.shrink {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+nav.shrink .nav-inner {
+    height: 64px;
+}
+
+/* Mobile dropdown: closed by default (max-height 0), JS toggles .open to expand */
+#mobileMenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#mobileMenu.open {
+    max-height: 480px;
+}
+
+#mobileMenu a {
+    padding: 10px 0 10px 18px;
+    display: block;
+    position: relative;
+}
+
+#mobileMenu a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    transform: translateY(-50%);
+    transition: background .2s ease, box-shadow .2s ease;
+}
+
+#mobileMenu a[aria-current="page"]::before {
+    background: #fff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, .6);
+}
+
+#mobileMenu-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 0;
+    margin-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: rgba(255, 255, 255, .5);
+}
+
+#menuBtn {
+    padding: 10px;
+    margin: -10px;
+}
+
+/* Nav Clock Status Dot: green 8am-8pm, red otherwise (Asia/Bangkok) */
+.nav-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    transition: background .3s ease, box-shadow .3s ease;
+}
+
+.nav-status-dot.online {
+    background: #00ff9d;
+    box-shadow: 0 0 7px #00ff9d;
+}
+
+.nav-status-dot.offline {
+    background: #ff3b3b;
+    box-shadow: 0 0 7px #ff3b3b;
+}
+
+/* Language Toggle */
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 3px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+    font-family: inherit;
+}
+
+.lang-btn.active {
+    color: #0a0a0a;
+    background: #fff;
+}
+
+.lang-btn:hover:not(.active) {
+    color: #fff;
+}
+
+/* ===================================== */
+/* CARD SYSTEM */
+/* ===================================== */
+
+.card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px; /* เพิ่มความโค้งมนให้ดูทันสมัย */
+    transition: all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 2rem;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================== */
+/* FADE ANIMATION */
+/* ===================================== */
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================== */
+/* CUSTOM CURSOR */
+/* ===================================== */
+
+#cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: none; /* ซ่อนบน Touch device */
+}
+
+@media (pointer: fine) {
+    #cursor { display: block; }
+}
+
+/* ===================================== */
+/* SCANLINE EFFECT */
+/* ===================================== */
+
+@keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+.scan-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.scan-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.01) 0px,
+        rgba(255, 255, 255, 0.01) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    pointer-events: none;
+    animation: scanline 10s linear infinite;
+}
+
+/* ===================================== */
+/* RESPONSIVE HELPERS */
+/* ===================================== */
+
+@media (max-width: 768px) {
+    .card { padding: 1.5rem; }
+}

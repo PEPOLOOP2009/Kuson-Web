@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awards & Activities | Kuson</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="STYLE.css" rel="stylesheet">
+
+<style>
+body{
+background:#0a0a0a;
+}
+
+/* Typing Animation Styling */
+#typing-text::after {
+    content: "|";
+    animation: blink 0.8s infinite;
+    margin-left: 4px;
+    color: rgba(255,255,255,0.7);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Filter */
+.filter-wrap{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:35px;
+}
+
+.filter-btn{
+padding:10px 18px;
+border:1px solid rgba(255,255,255,.08);
+border-radius:999px;
+font-size:13px;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:rgba(255,255,255,.65);
+transition:.3s;
+cursor:pointer;
+background:rgba(255,255,255,.02);
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+background:white;
+color:black;
+border-color:white;
+}
+
+/* Achievement Item */
+.timeline-item{
+border-left:1px solid rgba(255,255,255,.15);
+padding-left:34px;
+padding-top:10px;
+padding-bottom:10px;
+position:relative;
+cursor:pointer;
+transition:.35s ease;
+border-radius:14px;
+}
+
+.timeline-item:hover{
+transform:translateX(10px);
+background:rgba(255,255,255,.03);
+box-shadow:0 0 30px rgba(255,255,255,.05);
+}
+
+.dot{
+position:absolute;
+left:-7px;
+top:18px;
+width:12px;
+height:12px;
+background:white;
+border-radius:50%;
+}
+
+.preview-list{
+margin-top:14px;
+font-size:14px;
+color:rgba(255,255,255,.68);
+line-height:1.8;
+}
+
+.award-top{
+display:flex;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.result-badge{
+font-size:11px;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:#0a0a0a;
+background:rgba(255,255,255,.9);
+padding:4px 12px;
+border-radius:999px;
+font-weight:600;
+white-space:nowrap;
+}
+
+.award-chips{
+display:flex;
+gap:8px;
+margin-top:12px;
+flex-wrap:wrap;
+}
+
+.chip-sm{
+font-size:10px;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:rgba(255,255,255,.5);
+border:1px solid rgba(255,255,255,.15);
+padding:3px 10px;
+border-radius:999px;
+}
+
+/* Certificates */
+.cert-header{
+display:flex;
+align-items:baseline;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.cert-count{
+font-size:11px;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:rgba(255,255,255,.3);
+}
+
+.cert-group{
+margin-top:32px;
+}
+
+.cert-group-label{
+font-size:11px;
+letter-spacing:.22em;
+text-transform:uppercase;
+color:rgba(255,255,255,.35);
+margin-bottom:14px;
+}
+
+.cert-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:14px;
+}
+
+.cert-card{
+border:1px solid rgba(255,255,255,.1);
+padding:20px;
+border-radius:16px;
+cursor:pointer;
+transition:.3s ease;
+background:rgba(255,255,255,.015);
+}
+
+.cert-card:hover{
+transform:translateY(-4px);
+background:rgba(255,255,255,.04);
+border-color:rgba(255,255,255,.3);
+}
+
+.cert-card-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+}
+
+.cert-num{
+font-size:11px;
+color:rgba(255,255,255,.3);
+font-variant-numeric:tabular-nums;
+letter-spacing:.1em;
+}
+
+.cert-pdf-tag{
+font-size:9px;
+letter-spacing:.12em;
+color:rgba(255,255,255,.5);
+border:1px solid rgba(255,255,255,.18);
+padding:2px 8px;
+border-radius:999px;
+}
+
+.cert-card h3{
+font-size:14px;
+font-weight:600;
+margin:0 0 12px;
+line-height:1.4;
+}
+
+.cert-view{
+font-size:11px;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:rgba(255,255,255,.3);
+transition:.3s;
+}
+
+.cert-card:hover .cert-view{
+color:#fff;
+}
+
+/* Modal */
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+backdrop-filter:blur(24px);
+-webkit-backdrop-filter:blur(24px);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:opacity .35s ease, backdrop-filter .35s ease;
+z-index:999;
+padding:20px;
+}
+
+.modal.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.modal-box{
+width:100%;
+max-width:920px;
+max-height:92vh;
+overflow-y:auto;
+background:#111;
+border:1px solid rgba(255,255,255,.08);
+padding:42px;
+border-radius:24px;
+transform:translateY(40px) scale(.94);
+opacity:0;
+transition:.45s cubic-bezier(.19,1,.22,1);
+position:relative;
+}
+
+.modal.show .modal-box{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+
+.close{
+position:absolute;
+top:18px;
+right:24px;
+font-size:28px;
+cursor:pointer;
+opacity:.7;
+z-index:5;
+transition:.3s;
+}
+.close:hover{
+opacity:1;
+transform:rotate(90deg);
+}
+
+.tag{
+font-size:12px;
+letter-spacing:.24em;
+text-transform:uppercase;
+color:rgba(255,255,255,.45);
+}
+
+/* Hero */
+.hero{
+width:100%;
+height:300px;
+border-radius:18px;
+overflow:hidden;
+background:linear-gradient(135deg,#111,#1d1d1d);
+border:1px solid rgba(255,255,255,.08);
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:30px;
+color:rgba(255,255,255,.2);
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* Detail Section */
+.detail-section{
+padding-top:26px;
+margin-top:26px;
+border-top:1px solid rgba(255,255,255,.07);
+}
+
+.detail-title{
+font-size:12px;
+letter-spacing:.28em;
+text-transform:uppercase;
+color:rgba(255,255,255,.38);
+margin-bottom:14px;
+}
+
+.detail-text{
+color:rgba(255,255,255,.78);
+font-size:15px;
+line-height:1.9;
+}
+
+/* Skills Tags */
+.skill-wrap{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.skill{
+padding:8px 14px;
+border:1px solid rgba(255,255,255,.08);
+border-radius:999px;
+font-size:13px;
+color:rgba(255,255,255,.75);
+background:rgba(255,255,255,.02);
+}
+
+/* PDF View */
+iframe{
+width:100%;
+height:75vh;
+border:none;
+border-radius:18px;
+background:white;
+}
+
+.nav-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:32px;
+padding:10px 16px;
+cursor:pointer;
+background:rgba(255,255,255,.08);
+border-radius:12px;
+transition:.3s;
+user-select:none;
+}
+
+.nav-btn:hover{
+background:white;
+color:black;
+}
+
+.prev-btn{left:-70px;}
+.next-btn{right:-70px;}
+
+.hide{
+display:none !important;
+}
+
+.cert-mobile-nav{
+display:none;
+gap:12px;
+margin-top:16px;
+}
+
+.cert-mobile-nav button{
+flex:1;
+padding:12px;
+border:1px solid rgba(255,255,255,.15);
+border-radius:10px;
+background:rgba(255,255,255,.04);
+color:white;
+font-size:13px;
+letter-spacing:.08em;
+text-transform:uppercase;
+cursor:pointer;
+transition:.2s;
+}
+
+.cert-mobile-nav button:active{
+background:rgba(255,255,255,.14);
+}
+
+@media(max-width:900px){
+.prev-btn,.next-btn{
+display:none;
+}
+.hero{
+height:220px;
+}
+.modal-box{
+padding:28px;
+}
+.cert-mobile-nav{
+display:flex;
+}
+}
+</style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+<div id="scrollProgress"></div>
+<div id="cursor"></div>
+<div id="bg-glow"></div>
+
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-black/55 backdrop-blur-xl">
+    <div class="nav-inner relative px-6 lg:px-10 h-[84px] flex items-center justify-center">
+        <a href="index.html" class="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 flex items-center gap-2.5 lg:gap-3 hover:opacity-80 transition">
+            <span class="w-7 h-7 flex items-center justify-center rounded-md border border-white/20 text-[10px] font-bold text-white shrink-0">KW</span>
+            <span class="text-[9px] sm:text-[10px] lg:text-[12px] font-semibold tracking-[0.16em] sm:tracking-[0.2em] lg:tracking-[0.26em] uppercase text-white whitespace-nowrap">KUSON WANARATMONGKOL</span>
+        </a>
+
+        <ul class="hidden lg:flex items-center gap-6 text-[13px] tracking-[0.28em] uppercase">
+            <li><a href="index.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.home">Home</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="awards.html" class="text-white relative group"><span data-i18n="nav.awards">Awards</span><span class="absolute left-0 -bottom-2 w-full h-[1px] bg-white"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="intern.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.intern">Intern</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="projects.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.projects">Projects</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="contact.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.contact">Contact</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+        </ul>
+
+        <div class="absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 flex items-center gap-3">
+            <div class="hidden lg:inline-flex lang-toggle" role="group" aria-label="Language">
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="th">TH</button>
+            </div>
+            <div class="hidden lg:flex items-center gap-1.5 text-[13px] tracking-[0.1em] text-white/50">
+                <span class="nav-status-dot"></span>
+                <span class="clock-time text-white tabular-nums">--:--</span>
+                <span class="text-[10px] text-white/25 uppercase">BKK</span>
+            </div>
+            <button id="menuBtn" class="lg:hidden text-2xl text-white">☰</button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="lg:hidden border-t border-white/10 bg-black/90">
+        <div class="px-6 py-6 flex flex-col gap-5 text-[13px] tracking-[0.28em] uppercase">
+            <a href="index.html" class="text-white/60" data-i18n="nav.home">Home</a>
+            <a href="awards.html" class="text-white" aria-current="page" data-i18n="nav.awards">Awards</a>
+            <a href="intern.html" class="text-white/60" data-i18n="nav.intern">Intern</a>
+            <a href="projects.html" class="text-white/60" data-i18n="nav.projects">Projects</a>
+            <a href="contact.html" class="text-white/60" data-i18n="nav.contact">Contact</a>
+        </div>
+        <div id="mobileMenu-status">
+            <span class="nav-status-dot"></span>
+            <span class="availability-text">Available for Work</span>
+            <span class="text-white/25">—</span>
+            <span class="clock-time text-white tabular-nums">--:--</span>
+            <span class="text-white/25 text-[10px] uppercase">BKK</span>
+        </div>
+        <div class="px-6 pb-6 flex justify-center">
+            <div class="lang-toggle" role="group" aria-label="Language">
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="th">TH</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header class="py-24 px-6 border-b border-white/10">
+<div class="max-w-6xl mx-auto">
+<h1 id="typing-text" class="text-5xl tracking-tight fade-up"></h1>
+<p class="text-white/50 mt-6 max-w-2xl fade-up" data-i18n="header.subtext">
+Click achievements for full details. Certificates remain fully accessible below.
+</p>
+<div class="filter-wrap fade-up">
+<button class="filter-btn active" onclick="filterAwards('all',this)" data-i18n="filter.all">All</button>
+<button class="filter-btn" onclick="filterAwards('leadership',this)" data-i18n="filter.leadership">Leadership</button>
+<button class="filter-btn" onclick="filterAwards('competition',this)" data-i18n="filter.competition">Competition</button>
+<button class="filter-btn" onclick="filterAwards('marketing',this)" data-i18n="filter.marketing">Marketing</button>
+<button class="filter-btn" onclick="filterAwards('tech',this)" data-i18n="filter.tech">Tech</button>
+<button class="filter-btn" onclick="filterAwards('activities',this)" data-i18n="filter.activities">Activities</button>
+</div>
+</div>
+</header>
+
+<main class="flex-grow max-w-7xl mx-auto px-6 py-20">
+<div class="grid md:grid-cols-2 gap-14 md:gap-16">
+<section class="space-y-14">
+<h2 class="text-2xl font-bold tracking-[0.3em] fade-up" data-i18n="achievements.heading">ACHIEVEMENTS & ACTIVITIES</h2>
+
+<div class="timeline-item fade-up award-card marketing competition"
+onclick="openAward(
+'SDG Young Creator Competition',
+T('award1.tag'),
+'images/sdg.jpg',
+T('award1.desc'),
+T('award1.role'),
+T('award1.task'),
+T('award1.skills'),
+T('award1.result')
+)">
+<div class="dot"></div>
+<div class="award-top">
+<h2 class="text-xl font-semibold">SDG Young Creator Competition</h2>
+<span class="result-badge" data-i18n="award1.tag">Top Content & 2nd Place</span>
+</div>
+<div class="award-chips">
+<span class="chip-sm" data-i18n="filter.marketing">Marketing</span>
+<span class="chip-sm" data-i18n="filter.competition">Competition</span>
+</div>
+<ul class="preview-list">
+<li data-i18n="award1.preview1">Created sustainability media.</li>
+<li data-i18n="award1.preview2">High engagement campaign.</li>
+<li data-i18n="award1.preview3">Won multiple awards.</li>
+</ul>
+</div>
+
+<div class="timeline-item fade-up award-card competition"
+onclick="openAward(
+'Comedy Storytelling Competition',
+T('award2.tag'),
+'images/comedy.jpg',
+T('award2.desc'),
+T('award2.role'),
+T('award2.task'),
+T('award2.skills'),
+T('award2.result')
+)">
+<div class="dot"></div>
+<div class="award-top">
+<h2 class="text-xl font-semibold">Comedy Storytelling Competition</h2>
+<span class="result-badge" data-i18n="award2.tag">2nd Place</span>
+</div>
+<div class="award-chips">
+<span class="chip-sm" data-i18n="filter.competition">Competition</span>
+</div>
+<ul class="preview-list">
+<li data-i18n="award2.preview1">Represented department.</li>
+<li data-i18n="award2.preview2">Strong stage delivery.</li>
+</ul>
+</div>
+
+<div class="timeline-item fade-up award-card leadership tech"
+onclick="openAward(
+'School Esports Tournament',
+T('award3.tag'),
+'images/esport.jpg',
+T('award3.desc'),
+T('award3.role'),
+T('award3.task'),
+T('award3.skills'),
+T('award3.result')
+)">
+<div class="dot"></div>
+<div class="award-top">
+<h2 class="text-xl font-semibold">School Esports Tournament</h2>
+<span class="result-badge" data-i18n="award3.tag">President & Organizer</span>
+</div>
+<div class="award-chips">
+<span class="chip-sm" data-i18n="filter.leadership">Leadership</span>
+<span class="chip-sm" data-i18n="filter.tech">Tech</span>
+</div>
+<ul class="preview-list">
+<li data-i18n="award3.preview1">Managed tournament workflow.</li>
+<li data-i18n="award3.preview2">Handled team systems.</li>
+<li data-i18n="award3.preview3">Organized full event.</li>
+</ul>
+</div>
+
+<div class="timeline-item fade-up award-card leadership marketing"
+onclick="openAward(
+'Student Council Election',
+T('award4.tag'),
+'images/election.jpg',
+T('award4.desc'),
+T('award4.role'),
+T('award4.task'),
+T('award4.skills'),
+T('award4.result')
+)">
+<div class="dot"></div>
+<div class="award-top">
+<h2 class="text-xl font-semibold">Student Council Election</h2>
+<span class="result-badge" data-i18n="award4.tag">2nd Place</span>
+</div>
+<div class="award-chips">
+<span class="chip-sm" data-i18n="filter.leadership">Leadership</span>
+<span class="chip-sm" data-i18n="filter.marketing">Marketing</span>
+</div>
+<ul class="preview-list">
+<li data-i18n="award4.preview1">Student-focused campaign.</li>
+<li data-i18n="award4.preview2">Strong community support.</li>
+</ul>
+</div>
+
+<div class="timeline-item fade-up award-card activities leadership"
+onclick="openAward(
+'[Club or Organization Name]',
+T('act1.tag'),
+'images/act1.jpg',
+T('act1.desc'),
+T('act1.role'),
+T('act1.task'),
+T('act1.skills'),
+T('act1.result')
+)">
+<div class="dot"></div>
+<div class="award-top">
+<h2 class="text-xl font-semibold">[Club or Organization Name]</h2>
+<span class="result-badge" data-i18n="act1.tag">[Role] · [YEAR — YEAR]</span>
+</div>
+<div class="award-chips">
+<span class="chip-sm" data-i18n="filter.activities">Activities</span>
+<span class="chip-sm" data-i18n="filter.leadership">Leadership</span>
+</div>
+<ul class="preview-list">
+<li data-i18n="act1.preview1">[Led a team of X members to plan and run Y event.]</li>
+<li data-i18n="act1.preview2">[Coordinated with faculty, sponsors, or peers.]</li>
+</ul>
+</div>
+
+<div class="timeline-item fade-up award-card activities competition tech"
+onclick="openAward(
+'[Hackathon or Competition Name]',
+T('act2.tag'),
+'images/act2.jpg',
+T('act2.desc'),
+T('act2.role'),
+T('act2.task'),
+T('act2.skills'),
+T('act2.result')
+)">
+<div class="dot"></div>
+<div class="award-top">
+<h2 class="text-xl font-semibold">[Hackathon or Competition Name]</h2>
+<span class="result-badge" data-i18n="act2.tag">[Result] · [YEAR]</span>
+</div>
+<div class="award-chips">
+<span class="chip-sm" data-i18n="filter.activities">Activities</span>
+<span class="chip-sm" data-i18n="filter.competition">Competition</span>
+</div>
+<ul class="preview-list">
+<li data-i18n="act2.preview1">[Placed X out of Y teams building a prototype for Z.]</li>
+<li data-i18n="act2.preview2">[Owned a specific part of the build.]</li>
+</ul>
+</div>
+
+<div class="timeline-item fade-up award-card activities"
+onclick="openAward(
+'[Volunteer or Community Work]',
+T('act3.tag'),
+'images/act3.jpg',
+T('act3.desc'),
+T('act3.role'),
+T('act3.task'),
+T('act3.skills'),
+T('act3.result')
+)">
+<div class="dot"></div>
+<div class="award-top">
+<h2 class="text-xl font-semibold">[Volunteer or Community Work]</h2>
+<span class="result-badge" data-i18n="act3.tag">[Organization Name]</span>
+</div>
+<div class="award-chips">
+<span class="chip-sm" data-i18n="filter.activities">Activities</span>
+</div>
+<ul class="preview-list">
+<li data-i18n="act3.preview1">[Ongoing community involvement or volunteer work.]</li>
+</ul>
+</div>
+
+</section>
+
+<section class="space-y-10 md:border-l md:border-white/10 md:pl-14 lg:pl-16">
+<div class="cert-header fade-up">
+<h2 class="text-2xl font-bold tracking-[0.3em]" data-i18n="certs.heading">EXTRA TRAINING & CERTIFICATIONS</h2>
+<span class="cert-count" data-i18n="certs.count">7 Certificates</span>
+</div>
+
+<div class="cert-group fade-up">
+<div class="cert-group-label" data-i18n="certs.group1">Cybersecurity</div>
+<div class="cert-grid">
+<div class="cert-card" onclick="openCert(1)">
+<div class="cert-card-top"><span class="cert-num">01</span><span class="cert-pdf-tag">PDF</span></div>
+<h3 data-i18n="cert1.title">Business Cybersecurity Training</h3>
+<span class="cert-view" data-i18n="certs.viewCta">View Certificate →</span>
+</div>
+<div class="cert-card" onclick="openCert(2)">
+<div class="cert-card-top"><span class="cert-num">02</span><span class="cert-pdf-tag">PDF</span></div>
+<h3 data-i18n="cert2.title">Enterprise Cybersecurity Management</h3>
+<span class="cert-view" data-i18n="certs.viewCta">View Certificate →</span>
+</div>
+</div>
+</div>
+
+<div class="cert-group fade-up">
+<div class="cert-group-label" data-i18n="certs.group2">Marketing & Brand</div>
+<div class="cert-grid">
+<div class="cert-card" onclick="openCert(3)">
+<div class="cert-card-top"><span class="cert-num">03</span><span class="cert-pdf-tag">PDF</span></div>
+<h3 data-i18n="cert3.title">Brand Strategy Training</h3>
+<span class="cert-view" data-i18n="certs.viewCta">View Certificate →</span>
+</div>
+<div class="cert-card" onclick="openCert(4)">
+<div class="cert-card-top"><span class="cert-num">04</span><span class="cert-pdf-tag">PDF</span></div>
+<h3 data-i18n="cert4.title">Digital Marketing with AR</h3>
+<span class="cert-view" data-i18n="certs.viewCta">View Certificate →</span>
+</div>
+</div>
+</div>
+
+<div class="cert-group fade-up">
+<div class="cert-group-label" data-i18n="certs.group3">Technology</div>
+<div class="cert-grid">
+<div class="cert-card" onclick="openCert(5)">
+<div class="cert-card-top"><span class="cert-num">05</span><span class="cert-pdf-tag">PDF</span></div>
+<h3 data-i18n="cert5.title">Generative AI Technology</h3>
+<span class="cert-view" data-i18n="certs.viewCta">View Certificate →</span>
+</div>
+</div>
+</div>
+
+<div class="cert-group fade-up">
+<div class="cert-group-label" data-i18n="certs.group4">Commerce</div>
+<div class="cert-grid">
+<div class="cert-card" onclick="openCert(6)">
+<div class="cert-card-top"><span class="cert-num">06</span><span class="cert-pdf-tag">PDF</span></div>
+<h3 data-i18n="cert6.title">Easy e-Commerce Training</h3>
+<span class="cert-view" data-i18n="certs.viewCta">View Certificate →</span>
+</div>
+<div class="cert-card" onclick="openCert(7)">
+<div class="cert-card-top"><span class="cert-num">07</span><span class="cert-pdf-tag">PDF</span></div>
+<h3 data-i18n="cert7.title">Social Commerce Training</h3>
+<span class="cert-view" data-i18n="certs.viewCta">View Certificate →</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<footer class="border-t border-white/10 py-8 text-center text-white/40 text-xs tracking-widest">
+© 2026 KUSON WANARATMONGKOL
+</footer>
+
+<div class="modal" id="awardModal">
+<div class="modal-box">
+<div class="close" onclick="closeAward()">✕</div>
+<div class="hero" id="awardImage">AWARD IMAGE</div>
+<h2 id="awardTitle" class="text-4xl font-semibold mb-4"></h2>
+<p id="awardTag" class="tag mb-6"></p>
+<div class="detail-section mt-0 pt-0 border-0">
+<div class="detail-title" data-i18n="modal.overview">Overview</div>
+<p id="awardDesc" class="detail-text"></p>
+</div>
+<div class="detail-section">
+<div class="detail-title" data-i18n="modal.myRole">My Role</div>
+<p id="awardRole" class="detail-text"></p>
+</div>
+<div class="detail-section">
+<div class="detail-title" data-i18n="modal.responsibilities">Responsibilities</div>
+<p id="awardTask" class="detail-text"></p>
+</div>
+<div class="detail-section">
+<div class="detail-title" data-i18n="modal.skillsDeveloped">Skills Developed</div>
+<div id="awardSkills" class="skill-wrap"></div>
+</div>
+<div class="detail-section">
+<div class="detail-title" data-i18n="modal.impactResult">Impact / Result</div>
+<p id="awardResult" class="detail-text"></p>
+</div>
+</div>
+</div>
+
+<div class="modal" id="certModal">
+<div class="modal-box">
+<div class="close" onclick="closeCert()">✕</div>
+<div class="nav-btn prev-btn" onclick="prevCert()">‹</div>
+<div class="nav-btn next-btn" onclick="nextCert()">›</div>
+<iframe id="certFrame"></iframe>
+<div class="cert-mobile-nav">
+<button onclick="prevCert()"><span data-i18n="cert.prevBtn">‹ Prev</span></button>
+<button onclick="nextCert()"><span data-i18n="cert.nextBtn">Next ›</span></button>
+</div>
+</div>
+</div>
+
+<script>
+window.I18N_PAGE = {
+    en: {
+        "header.heading": "AWARDS & ACTIVITIES",
+        "header.subtext": "Click achievements for full details. Certificates remain fully accessible below.",
+        "filter.all": "All",
+        "filter.leadership": "Leadership",
+        "filter.competition": "Competition",
+        "filter.marketing": "Marketing",
+        "filter.tech": "Tech",
+        "filter.activities": "Activities",
+        "award1.tag": "Top Content & 2nd Place",
+        "award1.desc": "Created public relations and digital campaign content aligned with the UN Sustainable Development Goals.",
+        "award1.role": "Content Creator • Strategist • Presenter",
+        "award1.task": "Designed awareness media, campaign visuals, communication strategy, and presentation flow.",
+        "award1.skills": "Creative Thinking, Marketing, Public Speaking, Branding",
+        "award1.result": "Generated strong engagement and received multiple awards.",
+        "award1.preview1": "Created sustainability media.",
+        "award1.preview2": "High engagement campaign.",
+        "award1.preview3": "Won multiple awards.",
+        "award2.tag": "2nd Place",
+        "award2.desc": "Chosen as department representative for storytelling competition.",
+        "award2.role": "Representative • Public Speaker",
+        "award2.task": "Prepared script, practiced timing, managed audience interaction.",
+        "award2.skills": "Confidence, Humor Delivery, Stage Presence, Communication",
+        "award2.result": "Won 2nd place and represented department successfully.",
+        "award2.preview1": "Represented department.",
+        "award2.preview2": "Strong stage delivery.",
+        "award3.tag": "President & Organizer",
+        "award3.desc": "Led planning and execution of school esports event.",
+        "award3.role": "President • Organizer • Producer",
+        "award3.task": "Managed teams, livestream, schedules, operations, venue setup.",
+        "award3.skills": "Leadership, Event Planning, Teamwork, Management",
+        "award3.result": "Delivered smooth tournament successfully.",
+        "award3.preview1": "Managed tournament workflow.",
+        "award3.preview2": "Handled team systems.",
+        "award3.preview3": "Organized full event.",
+        "award4.tag": "2nd Place",
+        "award4.desc": "Designed campaign policies focused on student life and wellness.",
+        "award4.role": "Representative • Policy Designer",
+        "award4.task": "Created campaign plans, visuals, communication strategy.",
+        "award4.skills": "Leadership, Strategy, Design, Communication",
+        "award4.result": "Finished 2nd place with strong support.",
+        "award4.preview1": "Student-focused campaign.",
+        "award4.preview2": "Strong community support.",
+        "act1.tag": "[Role] · [YEAR — YEAR]",
+        "act1.desc": "[Description of the club or organization and what it does.]",
+        "act1.role": "[Role] — [School/University Name]",
+        "act1.task": "[Coordinated with faculty, sponsors, or peers to deliver the outcome.]",
+        "act1.skills": "Leadership, Communication, Project Management",
+        "act1.result": "[Outcome or impact of the activity.]",
+        "act1.preview1": "[Led a team of X members to plan and run Y event.]",
+        "act1.preview2": "[Coordinated with faculty, sponsors, or peers.]",
+        "act2.tag": "[Result] · [YEAR]",
+        "act2.desc": "[Description of the hackathon or competition and the challenge tackled.]",
+        "act2.role": "[Team Name / Category]",
+        "act2.task": "[Owned a specific part of the build — design, frontend, pitch, etc.]",
+        "act2.skills": "Teamwork, Rapid Prototyping, Problem Solving",
+        "act2.result": "[Placed X out of Y teams building a prototype for Z in 24–48 hours.]",
+        "act2.preview1": "[Placed X out of Y teams building a prototype for Z.]",
+        "act2.preview2": "[Owned a specific part of the build.]",
+        "act3.tag": "[Organization Name]",
+        "act3.desc": "[Description of the volunteer work or community involvement.]",
+        "act3.role": "[Role] — [Organization Name]",
+        "act3.task": "[Ongoing responsibilities or contributions.]",
+        "act3.skills": "Community Engagement, Reliability",
+        "act3.result": "[Impact of the ongoing volunteer work.]",
+        "act3.preview1": "[Ongoing community involvement or volunteer work.]",
+        "certs.heading": "EXTRA TRAINING & CERTIFICATIONS",
+        "certs.count": "7 Certificates",
+        "certs.group1": "Cybersecurity",
+        "certs.group2": "Marketing & Brand",
+        "certs.group3": "Technology",
+        "certs.group4": "Commerce",
+        "certs.viewCta": "View Certificate →",
+        "achievements.heading": "ACHIEVEMENTS & ACTIVITIES",
+        "cert1.title": "Business Cybersecurity Training",
+        "cert2.title": "Enterprise Cybersecurity Management",
+        "cert3.title": "Brand Strategy Training",
+        "cert4.title": "Digital Marketing with AR",
+        "cert5.title": "Generative AI Technology",
+        "cert6.title": "Easy e-Commerce Training",
+        "cert7.title": "Social Commerce Training",
+        "cert.prevBtn": "‹ Prev",
+        "cert.nextBtn": "Next ›",
+        "modal.overview": "Overview",
+        "modal.myRole": "My Role",
+        "modal.responsibilities": "Responsibilities",
+        "modal.skillsDeveloped": "Skills Developed",
+        "modal.impactResult": "Impact / Result"
+    },
+    th: {
+        "header.heading": "รางวัลและกิจกรรม",
+        "header.subtext": "คลิกที่ผลงานเพื่อดูรายละเอียดเพิ่มเติม ใบรับรองยังคงเข้าถึงได้ทั้งหมดด้านล่าง",
+        "filter.all": "ทั้งหมด",
+        "filter.leadership": "ภาวะผู้นำ",
+        "filter.competition": "การแข่งขัน",
+        "filter.marketing": "การตลาด",
+        "filter.tech": "เทคโนโลยี",
+        "filter.activities": "กิจกรรม",
+        "award1.tag": "คอนเทนต์ยอดเยี่ยม & รองชนะเลิศอันดับ 2",
+        "award1.desc": "สร้างสรรค์เนื้อหาประชาสัมพันธ์และแคมเปญดิจิทัลที่สอดคล้องกับเป้าหมายการพัฒนาที่ยั่งยืนของสหประชาชาติ",
+        "award1.role": "ผู้สร้างสรรค์เนื้อหา • นักวางกลยุทธ์ • ผู้นำเสนอ",
+        "award1.task": "ออกแบบสื่อรณรงค์ ภาพประกอบแคมเปญ กลยุทธ์การสื่อสาร และลำดับการนำเสนอ",
+        "award1.skills": "ความคิดสร้างสรรค์, การตลาด, การพูดในที่สาธารณะ, การสร้างแบรนด์",
+        "award1.result": "สร้างการมีส่วนร่วมสูงและได้รับรางวัลหลายรายการ",
+        "award1.preview1": "สร้างสื่อด้านความยั่งยืน",
+        "award1.preview2": "แคมเปญที่มีการมีส่วนร่วมสูง",
+        "award1.preview3": "ได้รับรางวัลหลายรายการ",
+        "award2.tag": "รองชนะเลิศอันดับ 2",
+        "award2.desc": "ได้รับเลือกเป็นตัวแทนภาควิชาในการแข่งขันเล่าเรื่อง",
+        "award2.role": "ตัวแทน • ผู้พูดในที่สาธารณะ",
+        "award2.task": "เตรียมบทพูด ฝึกซ้อมจังหวะเวลา และบริหารการมีปฏิสัมพันธ์กับผู้ชม",
+        "award2.skills": "ความมั่นใจ, การเล่าเรื่องตลก, บุคลิกบนเวที, การสื่อสาร",
+        "award2.result": "ได้รับรางวัลรองชนะเลิศอันดับ 2 และเป็นตัวแทนภาควิชาได้สำเร็จ",
+        "award2.preview1": "เป็นตัวแทนภาควิชา",
+        "award2.preview2": "การนำเสนอบนเวทีที่แข็งแกร่ง",
+        "award3.tag": "ประธานและผู้จัดงาน",
+        "award3.desc": "นำการวางแผนและดำเนินงานอีเวนต์อีสปอร์ตของโรงเรียน",
+        "award3.role": "ประธาน • ผู้จัดงาน • โปรดิวเซอร์",
+        "award3.task": "บริหารทีมงาน การถ่ายทอดสด ตารางเวลา การปฏิบัติงาน และการจัดสถานที่",
+        "award3.skills": "ภาวะผู้นำ, การวางแผนอีเวนต์, การทำงานเป็นทีม, การบริหารจัดการ",
+        "award3.result": "จัดการแข่งขันได้อย่างราบรื่นและประสบความสำเร็จ",
+        "award3.preview1": "บริหารขั้นตอนการแข่งขัน",
+        "award3.preview2": "ดูแลระบบทีม",
+        "award3.preview3": "จัดงานทั้งหมด",
+        "award4.tag": "รองชนะเลิศอันดับ 2",
+        "award4.desc": "ออกแบบนโยบายการรณรงค์ที่มุ่งเน้นชีวิตและความเป็นอยู่ที่ดีของนักเรียน",
+        "award4.role": "ตัวแทน • ผู้ออกแบบนโยบาย",
+        "award4.task": "จัดทำแผนการรณรงค์ ภาพประกอบ และกลยุทธ์การสื่อสาร",
+        "award4.skills": "ภาวะผู้นำ, กลยุทธ์, การออกแบบ, การสื่อสาร",
+        "award4.result": "จบด้วยอันดับรองชนะเลิศอันดับ 2 พร้อมแรงสนับสนุนที่แข็งแกร่ง",
+        "award4.preview1": "แคมเปญที่มุ่งเน้นนักเรียน",
+        "award4.preview2": "การสนับสนุนจากชุมชนที่แข็งแกร่ง",
+        "act1.tag": "[ตำแหน่ง] · [ปี — ปี]",
+        "act1.desc": "[คำอธิบายเกี่ยวกับชมรมหรือองค์กรและหน้าที่ของกิจกรรมนี้]",
+        "act1.role": "[ตำแหน่ง] — [ชื่อโรงเรียน/มหาวิทยาลัย]",
+        "act1.task": "[ประสานงานกับอาจารย์ ผู้สนับสนุน หรือเพื่อนร่วมทีมเพื่อให้ได้ผลลัพธ์]",
+        "act1.skills": "ภาวะผู้นำ, การสื่อสาร, การบริหารโครงการ",
+        "act1.result": "[ผลลัพธ์หรือผลกระทบของกิจกรรม]",
+        "act1.preview1": "[นำทีมสมาชิก X คน วางแผนและจัดกิจกรรม Y]",
+        "act1.preview2": "[ประสานงานกับอาจารย์ ผู้สนับสนุน หรือเพื่อนร่วมทีม]",
+        "act2.tag": "[ผลการแข่งขัน] · [ปี]",
+        "act2.desc": "[คำอธิบายเกี่ยวกับแฮกกาธอนหรือการแข่งขันและโจทย์ที่ทำ]",
+        "act2.role": "[ชื่อทีม / ประเภทการแข่งขัน]",
+        "act2.task": "[รับผิดชอบส่วนหนึ่งของการพัฒนา เช่น ดีไซน์ Frontend หรือการนำเสนอ]",
+        "act2.skills": "การทำงานเป็นทีม, การสร้างต้นแบบอย่างรวดเร็ว, การแก้ปัญหา",
+        "act2.result": "[ได้อันดับ X จาก Y ทีม จากการสร้างต้นแบบ Z ภายใน 24–48 ชั่วโมง]",
+        "act2.preview1": "[ได้อันดับ X จาก Y ทีม จากการสร้างต้นแบบ Z]",
+        "act2.preview2": "[รับผิดชอบส่วนหนึ่งของการพัฒนา]",
+        "act3.tag": "[ชื่อองค์กร]",
+        "act3.desc": "[คำอธิบายเกี่ยวกับงานอาสาสมัครหรือการมีส่วนร่วมในชุมชน]",
+        "act3.role": "[ตำแหน่ง] — [ชื่อองค์กร]",
+        "act3.task": "[ความรับผิดชอบหรือการมีส่วนร่วมอย่างต่อเนื่อง]",
+        "act3.skills": "การมีส่วนร่วมกับชุมชน, ความรับผิดชอบ",
+        "act3.result": "[ผลกระทบของงานอาสาสมัครที่ดำเนินอยู่]",
+        "act3.preview1": "[การมีส่วนร่วมในชุมชนหรืองานอาสาสมัครที่ยังดำเนินอยู่]",
+        "certs.heading": "การอบรมเพิ่มเติมและใบรับรอง",
+        "certs.count": "7 ใบรับรอง",
+        "certs.group1": "ความปลอดภัยไซเบอร์",
+        "certs.group2": "การตลาดและแบรนด์",
+        "certs.group3": "เทคโนโลยี",
+        "certs.group4": "พาณิชย์",
+        "certs.viewCta": "ดูใบรับรอง →",
+        "achievements.heading": "ผลงานและกิจกรรม",
+        "cert1.title": "การอบรมความปลอดภัยไซเบอร์สำหรับธุรกิจ",
+        "cert2.title": "การบริหารจัดการความปลอดภัยไซเบอร์ระดับองค์กร",
+        "cert3.title": "การอบรมกลยุทธ์แบรนด์",
+        "cert4.title": "การตลาดดิจิทัลด้วย AR",
+        "cert5.title": "เทคโนโลยี Generative AI",
+        "cert6.title": "การอบรมอีคอมเมิร์ซเบื้องต้น",
+        "cert7.title": "การอบรมโซเชียลคอมเมิร์ซ",
+        "cert.prevBtn": "‹ ก่อนหน้า",
+        "cert.nextBtn": "ถัดไป ›",
+        "modal.overview": "ภาพรวม",
+        "modal.myRole": "บทบาทของฉัน",
+        "modal.responsibilities": "ความรับผิดชอบ",
+        "modal.skillsDeveloped": "ทักษะที่พัฒนา",
+        "modal.impactResult": "ผลลัพธ์ / ผลกระทบ"
+    }
+};
+
+function T(key) {
+    return window.I18N_PAGE[getLang()][key];
+}
+</script>
+<script src="main.js"></script>
+<script>
+/* Typing Animation Logic */
+let typingGen = 0;
+const typingSpeed = 70;
+const typingTarget = document.getElementById("typing-text");
+let charIndex = 0;
+
+function typeWriter(myGen) {
+    if (myGen !== typingGen) return;
+    const textToType = T("header.heading");
+    if (charIndex < textToType.length) {
+        typingTarget.innerHTML += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(() => typeWriter(myGen), typingSpeed);
+    }
+}
+
+/* Trigger typewriter once the heading fades into view */
+typingTarget.addEventListener("fadeup:shown", () => setTimeout(() => typeWriter(typingGen), 400), { once: true });
+
+document.addEventListener("language:changed", () => {
+    typingGen++;
+    charIndex = 0;
+    typingTarget.innerHTML = "";
+    setTimeout(() => typeWriter(typingGen), 100);
+});
+
+/* Filter Function */
+function filterAwards(type,btn){
+document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+document.querySelectorAll(".award-card").forEach(card=>{
+if(type==="all"){
+card.classList.remove("hide");
+}else{
+card.classList.toggle("hide", !card.classList.contains(type));
+}
+});
+}
+
+/* Award Modal Logic */
+function openAward(title,tag,image,desc,role,task,skills,result){
+document.getElementById("awardTitle").innerText=title;
+document.getElementById("awardTag").innerText=tag;
+document.getElementById("awardDesc").innerText=desc;
+document.getElementById("awardRole").innerText=role;
+document.getElementById("awardTask").innerText=task;
+document.getElementById("awardResult").innerText=result;
+
+document.getElementById("awardImage").innerHTML =
+`<img src="${image}" onerror="this.remove();document.getElementById('awardImage').innerHTML='AWARD IMAGE';">`;
+
+let html="";
+skills.split(",").forEach(skill=>{
+html += `<div class="skill">${skill.trim()}</div>`;
+});
+document.getElementById("awardSkills").innerHTML = html;
+document.getElementById("awardModal").classList.add("show");
+document.body.style.overflow="hidden";
+}
+
+function closeAward(){
+document.getElementById("awardModal").classList.remove("show");
+document.body.style.overflow="auto";
+}
+
+/* Certificates Logic */
+let currentCert = 1;
+const totalCert = 7;
+
+function openCert(num){
+currentCert=num;
+document.getElementById("certFrame").src = "awards PDF/" + num + "award.pdf";
+document.getElementById("certModal").classList.add("show");
+document.body.style.overflow="hidden";
+}
+
+function closeCert(){
+document.getElementById("certModal").classList.remove("show");
+document.body.style.overflow="auto";
+}
+
+function nextCert(){
+currentCert++;
+if(currentCert>totalCert){currentCert=1;}
+openCert(currentCert);
+}
+
+function prevCert(){
+currentCert--;
+if(currentCert<1){currentCert=totalCert;}
+openCert(currentCert);
+}
+
+/* Modal Outside Click & Keyboard Events */
+document.getElementById("awardModal").onclick=(e)=>{
+if(e.target.id==="awardModal") closeAward();
+};
+
+document.getElementById("certModal").onclick=(e)=>{
+if(e.target.id==="certModal") closeCert();
+};
+
+document.addEventListener("keydown",(e)=>{
+if(e.key==="ArrowRight") nextCert();
+if(e.key==="ArrowLeft") prevCert();
+});
+</script>
+</body>
+</html>

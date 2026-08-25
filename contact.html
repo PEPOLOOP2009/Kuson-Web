@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Kuson Wanaratmongkol</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="STYLE.css" rel="stylesheet">
+
+<style>
+:root { --accent: #ffffff; }
+
+body {
+    background: #0a0a0a;
+}
+
+/* DYNAMIC GRID BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 50px 50px, 50px 50px;
+    z-index: -1;
+}
+
+/* CONTACT CARDS */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.card {
+    position: relative;
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 35px;
+    border-radius: 24px;
+    transition: .4s;
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+.card:hover {
+    background: rgba(255,255,255,0.03);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-8px);
+}
+
+.card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,0.08), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.card:hover .card-glow { opacity: 1; }
+
+.icon-box {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 20px;
+    font-size: 18px;
+    transition: .3s;
+}
+.card:hover .icon-box { background: white; color: black; }
+
+/* STATUS & LOCATION TAG */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+/* FAQ ACCORDION */
+.faq-list {
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.faq-q {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 4px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+}
+.faq-chevron {
+    font-size: 16px;
+    color: rgba(255,255,255,0.3);
+    transition: transform .3s ease;
+    flex: 0 0 auto;
+}
+.faq-item.open .faq-chevron {
+    transform: rotate(45deg);
+}
+.faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+}
+.faq-item.open .faq-a {
+    max-height: 200px;
+}
+.faq-a p {
+    padding: 0 4px 22px;
+    margin: 0;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    line-height: 1.7;
+    max-width: 65ch;
+}
+
+/* TOAST */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: white;
+    color: black;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    opacity: 0;
+    transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+<div id="scrollProgress"></div>
+<div id="cursor"></div>
+<div id="bg-glow"></div>
+
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-black/55 backdrop-blur-xl">
+    <div class="nav-inner relative px-6 lg:px-10 h-[84px] flex items-center justify-center">
+        <a href="index.html" class="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 flex items-center gap-2.5 lg:gap-3 hover:opacity-80 transition">
+            <span class="w-7 h-7 flex items-center justify-center rounded-md border border-white/20 text-[10px] font-bold text-white shrink-0">KW</span>
+            <span class="text-[9px] sm:text-[10px] lg:text-[12px] font-semibold tracking-[0.16em] sm:tracking-[0.2em] lg:tracking-[0.26em] uppercase text-white whitespace-nowrap">KUSON WANARATMONGKOL</span>
+        </a>
+
+        <ul class="hidden lg:flex items-center gap-6 text-[13px] tracking-[0.28em] uppercase">
+            <li><a href="index.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.home">Home</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="awards.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.awards">Awards</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="intern.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.intern">Intern</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="projects.html" class="text-white/55 hover:text-white transition relative group"><span data-i18n="nav.projects">Projects</span><span class="absolute left-0 -bottom-2 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a></li>
+            <li aria-hidden="true" class="text-white/25 select-none">·</li>
+            <li><a href="contact.html" class="text-white relative group"><span data-i18n="nav.contact">Contact</span><span class="absolute left-0 -bottom-2 w-full h-[1px] bg-white"></span></a></li>
+        </ul>
+
+        <div class="absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 flex items-center gap-3">
+            <div class="hidden lg:inline-flex lang-toggle" role="group" aria-label="Language">
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="th">TH</button>
+            </div>
+            <div class="hidden lg:flex items-center gap-1.5 text-[13px] tracking-[0.1em] text-white/50">
+                <span class="nav-status-dot"></span>
+                <span class="clock-time text-white tabular-nums">--:--</span>
+                <span class="text-[10px] text-white/25 uppercase">BKK</span>
+            </div>
+            <button id="menuBtn" class="lg:hidden text-2xl text-white" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation menu">☰</button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="lg:hidden border-t border-white/10 bg-black/90" role="navigation" aria-label="Mobile site navigation">
+        <div class="px-6 py-6 flex flex-col gap-5 text-[13px] tracking-[0.28em] uppercase">
+            <a href="index.html" class="text-white/60" data-i18n="nav.home">Home</a>
+            <a href="awards.html" class="text-white/60" data-i18n="nav.awards">Awards</a>
+            <a href="intern.html" class="text-white/60" data-i18n="nav.intern">Intern</a>
+            <a href="projects.html" class="text-white/60" data-i18n="nav.projects">Projects</a>
+            <a href="contact.html" class="text-white" aria-current="page" data-i18n="nav.contact">Contact</a>
+        </div>
+        <div id="mobileMenu-status">
+            <span class="nav-status-dot"></span>
+            <span class="availability-text">Available for Work</span>
+            <span class="text-white/25">—</span>
+            <span class="clock-time text-white tabular-nums">--:--</span>
+            <span class="text-white/25 text-[10px] uppercase">BKK</span>
+        </div>
+        <div class="px-6 pb-6 flex justify-center">
+            <div class="lang-toggle" role="group" aria-label="Language">
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="th">TH</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="flex-grow">
+    <header class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="fade-up flex flex-wrap justify-center gap-4 mb-8">
+                <div class="pill"><span class="nav-status-dot"></span> <span class="availability-text">Available for Work</span></div>
+                <div class="pill"><svg viewBox="0 0 24 24" class="w-[13px] h-[13px]" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg> <span data-i18n="hero.location">Bangkok, TH</span> <span class="clock-time tabular-nums text-white">--:--</span></div>
+            </div>
+            <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter fade-up" data-i18n="hero.heading">
+                Let's Build <br> <span class="text-white/20 italic">Something New.</span>
+            </h1>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 mb-32">
+        <div class="contact-grid">
+            
+            <button type="button" class="card fade-up" onclick="copyText(event,'kuson2552.14@gmail.com')" aria-label="Copy email address to clipboard">
+                <div class="card-glow"></div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+                <div class="text-[10px] tracking-[0.3em] text-white/40 uppercase mb-2" data-i18n="card.emailLabel">Primary Email</div>
+                <div class="text-lg font-medium">kuson2552.14@gmail.com</div>
+                <div class="mt-8 text-[10px] text-white/20 tracking-widest uppercase" data-i18n="card.clickCopy">Click to copy</div>
+            </button>
+
+            <a class="card fade-up" href="https://github.com/Kuson-PortFolio" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile in a new tab">
+                <div class="card-glow"></div>
+                <div class="icon-box"><svg viewBox="0 0 16 16" class="w-[18px] h-[18px]" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></div>
+                <div class="text-[10px] tracking-[0.3em] text-white/40 uppercase mb-2" data-i18n="card.sourceLabel">Source Code</div>
+                <div class="text-lg font-medium">@Kuson-PortFolio</div>
+                <div class="mt-8 text-[10px] text-white/20 tracking-widest uppercase" data-i18n="card.viewRepos">View repositories ↗</div>
+            </a>
+
+            <a class="card fade-up" href="https://www.instagram.com/mrpep_coco/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram profile in a new tab">
+                <div class="card-glow"></div>
+                <div class="icon-box"><svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+                <div class="text-[10px] tracking-[0.3em] text-white/40 uppercase mb-2" data-i18n="card.socialLabel">Social Media</div>
+                <div class="text-lg font-medium">@mrpep_coco</div>
+                <div class="mt-8 text-[10px] text-white/20 tracking-widest uppercase" data-i18n="card.instagramDm">Instagram DM ↗</div>
+            </a>
+
+        </div>
+
+        <div class="mt-12 flex flex-wrap justify-center gap-4 fade-up">
+            <a href="mailto:kuson2552.14@gmail.com" class="px-8 py-4 bg-white text-black rounded-full font-bold text-xs tracking-widest uppercase hover:scale-105 transition" data-i18n="cta.sendEmail">
+                Send Direct Email
+            </a>
+            <a href="tel:0628070810" class="px-8 py-4 border border-white/10 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-white/5 transition" data-i18n="cta.call">
+                Call: 062-807-0810
+            </a>
+        </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-6 pb-32">
+        <div class="text-center mb-12 fade-up">
+            <h2 class="text-xs tracking-[0.5em] text-white/30 uppercase" data-i18n="faq.heading">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list fade-up" id="faqList">
+            <div class="faq-item">
+                <button type="button" class="faq-q">
+                    <span data-i18n="faq.q1">What kind of work do you take on?</span>
+                    <span class="faq-chevron">+</span>
+                </button>
+                <div class="faq-a">
+                    <p data-i18n="faq.a1">I take on Front-end website development, UI design with Figma, and creative work with Unity/C#.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button type="button" class="faq-q">
+                    <span data-i18n="faq.q2">How long does it take to reply?</span>
+                    <span class="faq-chevron">+</span>
+                </button>
+                <div class="faq-a">
+                    <p data-i18n="faq.a2">I usually reply within 24 hours via Email or Instagram DM.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button type="button" class="faq-q">
+                    <span data-i18n="faq.q3">Do you take on rush projects?</span>
+                    <span class="faq-chevron">+</span>
+                </button>
+                <div class="faq-a">
+                    <p data-i18n="faq.a3">It depends on my current workload — feel free to reach out first to discuss feasibility.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button type="button" class="faq-q">
+                    <span data-i18n="faq.q4">Where do you work from?</span>
+                    <span class="faq-chevron">+</span>
+                </button>
+                <div class="faq-a">
+                    <p data-i18n="faq.a4">I primarily work remotely, but can arrange in-person meetings in Bangkok by appointment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="border-t border-white/5 py-12 text-center text-white/20 text-[10px] tracking-[0.4em] uppercase">
+    © 2026 KUSON WANARATMONGKOL — <span data-i18n="footer.tagline">Turn Vision into Reality</span>
+</footer>
+
+<div id="toast" class="toast" data-i18n="toast.copied">COPIED TO CLIPBOARD</div>
+
+<script>
+window.I18N_PAGE = {
+    en: {
+        "hero.location": "Bangkok, TH",
+        "hero.heading": "Let's Build <br> <span class=\"text-white/20 italic\">Something New.</span>",
+        "card.emailLabel": "Primary Email",
+        "card.clickCopy": "Click to copy",
+        "card.sourceLabel": "Source Code",
+        "card.viewRepos": "View repositories ↗",
+        "card.socialLabel": "Social Media",
+        "card.instagramDm": "Instagram DM ↗",
+        "cta.sendEmail": "Send Direct Email",
+        "cta.call": "Call: 062-807-0810",
+        "faq.heading": "Frequently Asked Questions",
+        "faq.q1": "What kind of work do you take on?",
+        "faq.a1": "I take on Front-end website development, UI design with Figma, and creative work with Unity/C#.",
+        "faq.q2": "How long does it take to reply?",
+        "faq.a2": "I usually reply within 24 hours via Email or Instagram DM.",
+        "faq.q3": "Do you take on rush projects?",
+        "faq.a3": "It depends on my current workload — feel free to reach out first to discuss feasibility.",
+        "faq.q4": "Where do you work from?",
+        "faq.a4": "I primarily work remotely, but can arrange in-person meetings in Bangkok by appointment.",
+        "toast.copied": "COPIED TO CLIPBOARD",
+        "toast.copiedMsg": "Copied to clipboard",
+        "toast.copyFailMsg": "Unable to copy. Please use your browser's copy command."
+    },
+    th: {
+        "hero.location": "กรุงเทพฯ, ไทย",
+        "hero.heading": "มาสร้างสรรค์ <br> <span class=\"text-white/20 italic\">สิ่งใหม่ด้วยกัน</span>",
+        "card.emailLabel": "อีเมลหลัก",
+        "card.clickCopy": "คลิกเพื่อคัดลอก",
+        "card.sourceLabel": "ซอร์สโค้ด",
+        "card.viewRepos": "ดูรีพอสิทอรี ↗",
+        "card.socialLabel": "โซเชียลมีเดีย",
+        "card.instagramDm": "ทัก Instagram DM ↗",
+        "cta.sendEmail": "ส่งอีเมลโดยตรง",
+        "cta.call": "โทร: 062-807-0810",
+        "faq.heading": "คำถามที่พบบ่อย",
+        "faq.q1": "รับงานประเภทไหนบ้าง?",
+        "faq.a1": "รับพัฒนา Front-end Website, ออกแบบ UI ด้วย Figma และงานสร้างสรรค์ด้วย Unity/C# ครับ",
+        "faq.q2": "ใช้เวลาตอบกลับนานไหม?",
+        "faq.a2": "ปกติผมจะตอบกลับภายใน 24 ชั่วโมง ผ่านทาง Email หรือ Instagram DM ครับ",
+        "faq.q3": "รับทำโปรเจกต์ด่วนไหม?",
+        "faq.a3": "ขึ้นอยู่กับคิวงานในขณะนั้น สามารถทักเข้ามาปรึกษาความเป็นไปได้ก่อนได้เลยครับ",
+        "faq.q4": "Location การทำงาน?",
+        "faq.a4": "เน้นการทำงานแบบ Remote แต่สามารถนัดคุยงานในกรุงเทพฯ ได้ตามตกลงครับ",
+        "toast.copied": "คัดลอกไปยังคลิปบอร์ดแล้ว",
+        "toast.copiedMsg": "คัดลอกไปยังคลิปบอร์ดแล้ว",
+        "toast.copyFailMsg": "ไม่สามารถคัดลอกได้ กรุณาใช้คำสั่งคัดลอกของเบราว์เซอร์"
+    }
+};
+
+function T(key) {
+    return window.I18N_PAGE[getLang()][key];
+}
+</script>
+<script src="main.js"></script>
+<script>
+/* CARD MOUSE TRACKING (Individual Glow) */
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - rect.left) + "px");
+        card.style.setProperty("--my", (e.clientY - rect.top) + "px");
+    });
+});
+
+/* COPY TO CLIPBOARD */
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2000);
+}
+
+function copyText(e, text) {
+    navigator.clipboard.writeText(text)
+        .then(() => showToast(T("toast.copiedMsg")))
+        .catch(() => showToast(T("toast.copyFailMsg")));
+}
+
+/* FAQ ACCORDION */
+document.querySelectorAll(".faq-item").forEach(item => {
+    item.querySelector(".faq-q").addEventListener("click", () => {
+        const wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+        if (!wasOpen) item.classList.add("open");
+    });
+});
+
+</script>
+</body>
+</html>
