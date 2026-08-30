@@ -4,6 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Kuson Wanaratmongkol</title>
+<meta name="description" content="Get in touch with Kuson Wanaratmongkol (กุศล วนารัตน์มงคล) for front-end development, UI/UX design, and creative Unity/C# work — available for freelance and collaboration.">
+<meta name="author" content="Kuson Wanaratmongkol">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://kusonportfolio.netlify.app/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kusonportfolio.netlify.app/contact.html">
+<meta property="og:site_name" content="Kuson Wanaratmongkol — Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="th_TH">
+<meta property="og:title" content="Contact | Kuson Wanaratmongkol">
+<meta property="og:description" content="Front-end development, UI/UX design, and creative Unity/C# work — available for freelance and collaboration.">
+<meta property="og:image" content="https://kusonportfolio.netlify.app/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kuson Wanaratmongkol — Portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact | Kuson Wanaratmongkol">
+<meta name="twitter:description" content="Front-end development, UI/UX design, and creative Unity/C# work — available for freelance and collaboration.">
+<meta name="twitter:image" content="https://kusonportfolio.netlify.app/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="Kuson Wanaratmongkol — Portfolio">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "name": "Contact | Kuson Wanaratmongkol",
+      "url": "https://kusonportfolio.netlify.app/contact.html",
+      "isPartOf": { "@id": "https://kusonportfolio.netlify.app/#website" },
+      "about": {
+        "@type": "Person",
+        "name": "Kuson Wanaratmongkol",
+        "alternateName": "กุศล วนารัตน์มงคล",
+        "sameAs": [
+          "https://github.com/Kuson-PortFolio",
+          "https://www.instagram.com/mrpep_coco/"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kusonportfolio.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://kusonportfolio.netlify.app/contact.html" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -156,6 +206,56 @@ body::before {
     z-index: 1000;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Ambient orbs (hero) */
+.orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.3;
+    pointer-events:none;
+    z-index:0;
+}
+.orb-a{
+    width:380px;height:380px;
+    top:-140px;left:-100px;
+    background:radial-gradient(circle, rgba(255,255,255,.5), transparent 70%);
+    animation:orbFloatA 18s ease-in-out infinite;
+}
+.orb-b{
+    width:300px;height:300px;
+    top:-60px;right:-100px;
+    background:radial-gradient(circle, rgba(255,255,255,.35), transparent 70%);
+    animation:orbFloatB 22s ease-in-out infinite;
+}
+@keyframes orbFloatA{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(30px,30px);}
+}
+@keyframes orbFloatB{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(-30px,20px);}
+}
+
+/* Quick message composer */
+.quick-input{
+    width:100%;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px;
+    padding:14px 16px;
+    color:#fff;
+    font-family:inherit;
+    font-size:14px;
+    resize:vertical;
+    transition:.25s;
+}
+.quick-input::placeholder{color:rgba(255,255,255,0.3);}
+.quick-input:focus{
+    outline:none;
+    border-color:rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.05);
+}
 </style>
 </head>
 
@@ -223,8 +323,10 @@ body::before {
 </nav>
 
 <main class="flex-grow">
-    <header class="pt-32 pb-20 px-6">
-        <div class="max-w-6xl mx-auto text-center">
+    <header class="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
             <div class="fade-up flex flex-wrap justify-center gap-4 mb-8">
                 <div class="pill"><span class="nav-status-dot"></span> <span class="availability-text">Available for Work</span></div>
                 <div class="pill"><svg viewBox="0 0 24 24" class="w-[13px] h-[13px]" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.3"/></svg> <span data-i18n="hero.location">Bangkok, TH</span> <span class="clock-time tabular-nums text-white">--:--</span></div>
@@ -274,44 +376,68 @@ body::before {
         </div>
     </section>
 
+    <section class="max-w-3xl mx-auto px-6 mb-32">
+        <div class="card fade-up" style="cursor:default;">
+            <div class="card-glow"></div>
+            <div class="text-[10px] tracking-[0.3em] text-white/40 uppercase mb-2" data-i18n="quickMsg.label">Quick Message</div>
+            <h2 class="text-xl font-semibold mb-6" data-i18n="quickMsg.heading">Send a note straight to my inbox</h2>
+            <form id="quickMsgForm" class="grid gap-4">
+                <div>
+                    <label for="qmName" class="sr-only" data-i18n="quickMsg.nameLabel">Your name</label>
+                    <input type="text" id="qmName" class="quick-input" autocomplete="name" placeholder="Your name">
+                </div>
+                <div>
+                    <label for="qmMessage" class="sr-only" data-i18n="quickMsg.messageLabel">Your message</label>
+                    <textarea id="qmMessage" required rows="4" class="quick-input" placeholder="What would you like to build together?"></textarea>
+                </div>
+                <div class="flex flex-wrap items-center gap-4">
+                    <button type="submit" class="px-8 py-4 bg-white text-black rounded-full font-bold text-xs tracking-widest uppercase hover:scale-105 transition w-fit" data-i18n="quickMsg.button">
+                        Open in Email App ↗
+                    </button>
+                    <span class="text-[11px] text-white/30" data-i18n="quickMsg.note">Opens your email app with this pre-filled.</span>
+                </div>
+            </form>
+        </div>
+    </section>
+
     <section class="max-w-3xl mx-auto px-6 pb-32">
         <div class="text-center mb-12 fade-up">
             <h2 class="text-xs tracking-[0.5em] text-white/30 uppercase" data-i18n="faq.heading">Frequently Asked Questions</h2>
         </div>
         <div class="faq-list fade-up" id="faqList">
             <div class="faq-item">
-                <button type="button" class="faq-q">
+                <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
                     <span data-i18n="faq.q1">What kind of work do you take on?</span>
                     <span class="faq-chevron">+</span>
                 </button>
-                <div class="faq-a">
+                <div class="faq-a" id="faq-a-1">
                     <p data-i18n="faq.a1">I take on Front-end website development, UI design with Figma, and creative work with Unity/C#.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button type="button" class="faq-q">
+                <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-2">
                     <span data-i18n="faq.q2">How long does it take to reply?</span>
                     <span class="faq-chevron">+</span>
                 </button>
-                <div class="faq-a">
+                <div class="faq-a" id="faq-a-2">
                     <p data-i18n="faq.a2">I usually reply within 24 hours via Email or Instagram DM.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button type="button" class="faq-q">
+                <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-3">
                     <span data-i18n="faq.q3">Do you take on rush projects?</span>
                     <span class="faq-chevron">+</span>
                 </button>
-                <div class="faq-a">
+                <div class="faq-a" id="faq-a-3">
                     <p data-i18n="faq.a3">It depends on my current workload — feel free to reach out first to discuss feasibility.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button type="button" class="faq-q">
+                <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-4">
                     <span data-i18n="faq.q4">Where do you work from?</span>
                     <span class="faq-chevron">+</span>
                 </button>
-                <div class="faq-a">
+                <div class="faq-a" id="faq-a-4">
                     <p data-i18n="faq.a4">I primarily work remotely, but can arrange in-person meetings in Bangkok by appointment.</p>
                 </div>
             </div>
@@ -338,6 +464,16 @@ window.I18N_PAGE = {
         "card.instagramDm": "Instagram DM ↗",
         "cta.sendEmail": "Send Direct Email",
         "cta.call": "Call: 062-807-0810",
+        "quickMsg.label": "Quick Message",
+        "quickMsg.heading": "Send a note straight to my inbox",
+        "quickMsg.nameLabel": "Your name",
+        "quickMsg.namePlaceholder": "Your name",
+        "quickMsg.messageLabel": "Your message",
+        "quickMsg.messagePlaceholder": "What would you like to build together?",
+        "quickMsg.button": "Open in Email App ↗",
+        "quickMsg.note": "Opens your email app with this pre-filled.",
+        "quickMsg.subject": "Portfolio inquiry",
+        "quickMsg.subjectFrom": "Portfolio inquiry from",
         "faq.heading": "Frequently Asked Questions",
         "faq.q1": "What kind of work do you take on?",
         "faq.a1": "I take on Front-end website development, UI design with Figma, and creative work with Unity/C#.",
@@ -362,6 +498,16 @@ window.I18N_PAGE = {
         "card.instagramDm": "ทัก Instagram DM ↗",
         "cta.sendEmail": "ส่งอีเมลโดยตรง",
         "cta.call": "โทร: 062-807-0810",
+        "quickMsg.label": "ข้อความด่วน",
+        "quickMsg.heading": "ส่งข้อความถึงผมโดยตรง",
+        "quickMsg.nameLabel": "ชื่อของคุณ",
+        "quickMsg.namePlaceholder": "ชื่อของคุณ",
+        "quickMsg.messageLabel": "ข้อความของคุณ",
+        "quickMsg.messagePlaceholder": "อยากสร้างสรรค์อะไรด้วยกัน?",
+        "quickMsg.button": "เปิดแอปอีเมล ↗",
+        "quickMsg.note": "จะเปิดแอปอีเมลของคุณพร้อมข้อความนี้",
+        "quickMsg.subject": "ข้อความติดต่อจากพอร์ตโฟลิโอ",
+        "quickMsg.subjectFrom": "ข้อความติดต่อจากพอร์ตโฟลิโอ โดย",
         "faq.heading": "คำถามที่พบบ่อย",
         "faq.q1": "รับงานประเภทไหนบ้าง?",
         "faq.a1": "รับพัฒนา Front-end Website, ออกแบบ UI ด้วย Figma และงานสร้างสรรค์ด้วย Unity/C# ครับ",
@@ -408,12 +554,42 @@ function copyText(e, text) {
 
 /* FAQ ACCORDION */
 document.querySelectorAll(".faq-item").forEach(item => {
-    item.querySelector(".faq-q").addEventListener("click", () => {
+    const btn = item.querySelector(".faq-q");
+    btn.addEventListener("click", () => {
         const wasOpen = item.classList.contains("open");
-        document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
-        if (!wasOpen) item.classList.add("open");
+        document.querySelectorAll(".faq-item").forEach(i => {
+            i.classList.remove("open");
+            i.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+        });
+        if (!wasOpen) {
+            item.classList.add("open");
+            btn.setAttribute("aria-expanded", "true");
+        }
     });
 });
+
+/* QUICK MESSAGE COMPOSER */
+function applyQuickMsgPlaceholders() {
+    const nameEl = document.getElementById("qmName");
+    const msgEl = document.getElementById("qmMessage");
+    if (nameEl) nameEl.placeholder = T("quickMsg.namePlaceholder");
+    if (msgEl) msgEl.placeholder = T("quickMsg.messagePlaceholder");
+}
+applyQuickMsgPlaceholders();
+document.addEventListener("language:changed", applyQuickMsgPlaceholders);
+
+const quickMsgForm = document.getElementById("quickMsgForm");
+if (quickMsgForm) {
+    quickMsgForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("qmName").value.trim();
+        const message = document.getElementById("qmMessage").value.trim();
+        if (!message) return;
+        const subject = name ? `${T("quickMsg.subjectFrom")} ${name}` : T("quickMsg.subject");
+        const body = name ? `${message}\n\n— ${name}` : message;
+        window.location.href = `mailto:kuson2552.14@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+}
 
 </script>
 </body>

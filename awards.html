@@ -3,7 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awards & Activities | Kuson</title>
+<title>Awards & Activities | Kuson Wanaratmongkol</title>
+<meta name="description" content="Awards, achievements, and activities by Kuson Wanaratmongkol (กุศล วนารัตน์มงคล) — including the SDGs Young Creator Gen 1 recognition, the SPSMVERSE Roblox development credit, leadership roles, and training certifications.">
+<meta name="author" content="Kuson Wanaratmongkol">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://kusonportfolio.netlify.app/awards.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kusonportfolio.netlify.app/awards.html">
+<meta property="og:site_name" content="Kuson Wanaratmongkol — Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="th_TH">
+<meta property="og:title" content="Awards & Activities | Kuson Wanaratmongkol">
+<meta property="og:description" content="SDGs Young Creator Gen 1, SPSMVERSE Roblox recognition, leadership awards, and training certifications.">
+<meta property="og:image" content="https://kusonportfolio.netlify.app/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kuson Wanaratmongkol — Portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Awards & Activities | Kuson Wanaratmongkol">
+<meta name="twitter:description" content="SDGs Young Creator Gen 1, SPSMVERSE Roblox recognition, leadership awards, and training certifications.">
+<meta name="twitter:image" content="https://kusonportfolio.netlify.app/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="Kuson Wanaratmongkol — Portfolio">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "name": "Awards & Activities | Kuson Wanaratmongkol",
+      "url": "https://kusonportfolio.netlify.app/awards.html",
+      "description": "Awards, achievements, and activities by Kuson Wanaratmongkol (กุศล วนารัตน์มงคล).",
+      "isPartOf": { "@id": "https://kusonportfolio.netlify.app/#website" },
+      "about": { "@id": "https://kusonportfolio.netlify.app/#person" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kusonportfolio.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Awards & Activities", "item": "https://kusonportfolio.netlify.app/awards.html" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -303,6 +346,35 @@ height:100%;
 object-fit:cover;
 }
 
+.hero{position:relative;}
+
+.hero.clickable{cursor:pointer;}
+
+.hero-link-badge{
+position:absolute;
+top:14px;
+right:14px;
+font-size:10px;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:#fff;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(6px);
+-webkit-backdrop-filter:blur(6px);
+padding:6px 12px;
+border-radius:999px;
+border:1px solid rgba(255,255,255,.25);
+opacity:0;
+transform:translateY(-4px);
+transition:.3s;
+pointer-events:none;
+}
+
+.hero.clickable:hover .hero-link-badge{
+opacity:1;
+transform:translateY(0);
+}
+
 /* Detail Section */
 .detail-section{
 padding-top:26px;
@@ -509,7 +581,10 @@ T('award1.desc'),
 T('award1.role'),
 T('award1.task'),
 T('award1.skills'),
-T('award1.result')
+T('award1.result'),
+'https://www.facebook.com/GlobalCompactNetworkThailand/posts/-sdgs-young-creator-คือ-พื้นที่ของวัยรุ่นไฟแรง-ที่อยากสร้างโลกให้น่าอยู่ขึ้น-ด้ว/1265272538941490/',
+'https://globalcompact-th.com/ประกาศผล-sdgs-young-creator-เรียนรู้จากต/',
+T('award1.quote')
 )">
 <div class="dot"></div>
 <div class="award-top">
@@ -519,6 +594,7 @@ T('award1.result')
 <div class="award-chips">
 <span class="chip-sm" data-i18n="filter.marketing">Marketing</span>
 <span class="chip-sm" data-i18n="filter.competition">Competition</span>
+<span class="chip-sm" data-i18n="award1.genChip">SDGs Young Creator · Gen 1</span>
 </div>
 <ul class="preview-list">
 <li data-i18n="award1.preview1">Created sustainability media.</li>
@@ -547,8 +623,9 @@ T('award2.result')
 <span class="chip-sm" data-i18n="filter.competition">Competition</span>
 </div>
 <ul class="preview-list">
-<li data-i18n="award2.preview1">Represented department.</li>
-<li data-i18n="award2.preview2">Strong stage delivery.</li>
+<li data-i18n="award2.preview1">Chosen to represent his Thai-speaking class.</li>
+<li data-i18n="award2.preview2">Told the comedic story of his childhood pet, "Shrimp."</li>
+<li data-i18n="award2.preview3">Competed against every grade level school-wide.</li>
 </ul>
 </div>
 
@@ -605,29 +682,30 @@ T('award4.result')
 </ul>
 </div>
 
-<div class="timeline-item fade-up award-card activities leadership"
+<div class="timeline-item fade-up award-card activities tech"
 onclick="openAward(
-'[Club or Organization Name]',
+'SPSMVERSE — Roblox (UX/UI & Gameplay Design)',
 T('act1.tag'),
-'images/act1.jpg',
+'images/spsmverse.jpg',
 T('act1.desc'),
 T('act1.role'),
 T('act1.task'),
 T('act1.skills'),
-T('act1.result')
+T('act1.result'),
+'https://www.instagram.com/p/DcITyi7EuNo/'
 )">
 <div class="dot"></div>
 <div class="award-top">
-<h2 class="text-xl font-semibold">[Club or Organization Name]</h2>
-<span class="result-badge" data-i18n="act1.tag">[Role] · [YEAR — YEAR]</span>
+<h2 class="text-xl font-semibold">SPSMVERSE — Roblox (UX/UI & Gameplay Design)</h2>
+<span class="result-badge" data-i18n="act1.tag">Certificate of Recognition · Aug 2026</span>
 </div>
 <div class="award-chips">
 <span class="chip-sm" data-i18n="filter.activities">Activities</span>
-<span class="chip-sm" data-i18n="filter.leadership">Leadership</span>
+<span class="chip-sm" data-i18n="filter.tech">Tech</span>
 </div>
 <ul class="preview-list">
-<li data-i18n="act1.preview1">[Led a team of X members to plan and run Y event.]</li>
-<li data-i18n="act1.preview2">[Coordinated with faculty, sponsors, or peers.]</li>
+<li data-i18n="act1.preview1">UX/UI & 3D design for a school Roblox world.</li>
+<li data-i18n="act1.preview2">Built gameplay systems in Roblox Studio.</li>
 </ul>
 </div>
 
@@ -659,9 +737,9 @@ T('act2.result')
 
 <div class="timeline-item fade-up award-card activities"
 onclick="openAward(
-'[Volunteer or Community Work]',
+'Creative Rush — Junior Welcome Day',
 T('act3.tag'),
-'images/act3.jpg',
+'images/creativerush.jpg',
 T('act3.desc'),
 T('act3.role'),
 T('act3.task'),
@@ -670,14 +748,15 @@ T('act3.result')
 )">
 <div class="dot"></div>
 <div class="award-top">
-<h2 class="text-xl font-semibold">[Volunteer or Community Work]</h2>
-<span class="result-badge" data-i18n="act3.tag">[Organization Name]</span>
+<h2 class="text-xl font-semibold">Creative Rush — Junior Welcome Day</h2>
+<span class="result-badge" data-i18n="act3.tag">Student Volunteer · Apr 2025</span>
 </div>
 <div class="award-chips">
 <span class="chip-sm" data-i18n="filter.activities">Activities</span>
 </div>
 <ul class="preview-list">
-<li data-i18n="act3.preview1">[Ongoing community involvement or volunteer work.]</li>
+<li data-i18n="act3.preview1">Ran creative-thinking activities for incoming M.4 students.</li>
+<li data-i18n="act3.preview2">Volunteered with the M.5 IM team.</li>
 </ul>
 </div>
 
@@ -758,12 +837,22 @@ T('act3.result')
 <div class="modal" id="awardModal">
 <div class="modal-box">
 <div class="close" onclick="closeAward()">✕</div>
-<div class="hero" id="awardImage">AWARD IMAGE</div>
+<div class="hero" id="awardImage"></div>
+<a id="awardLinkFallback" href="#" target="_blank" rel="noopener" style="display:none" class="items-center gap-2 text-[12px] tracking-[0.15em] uppercase text-white/70 hover:text-white transition mb-6 border-b border-white/20 hover:border-white pb-1 w-fit">
+<span data-i18n="modal.viewPost">View Post ↗</span>
+</a>
 <h2 id="awardTitle" class="text-4xl font-semibold mb-4"></h2>
-<p id="awardTag" class="tag mb-6"></p>
+<p id="awardTag" class="tag mb-4"></p>
+<a id="awardArticleLink" href="#" target="_blank" rel="noopener" style="display:none" class="items-center gap-2 text-[12px] tracking-[0.15em] uppercase text-white/70 hover:text-white transition mb-6 border-b border-white/20 hover:border-white pb-1 w-fit">
+<span data-i18n="modal.readArticle">Read Full Article</span> ↗
+</a>
 <div class="detail-section mt-0 pt-0 border-0">
 <div class="detail-title" data-i18n="modal.overview">Overview</div>
 <p id="awardDesc" class="detail-text"></p>
+</div>
+<div class="detail-section" id="awardQuoteSection" style="display:none">
+<div class="detail-title" data-i18n="modal.testimonial">Testimonial</div>
+<blockquote id="awardQuote" class="detail-text" style="border-left:2px solid rgba(255,255,255,.15);padding-left:20px;"></blockquote>
 </div>
 <div class="detail-section">
 <div class="detail-title" data-i18n="modal.myRole">My Role</div>
@@ -809,22 +898,25 @@ window.I18N_PAGE = {
         "filter.tech": "Tech",
         "filter.activities": "Activities",
         "award1.tag": "Top Content & 2nd Place",
-        "award1.desc": "Created public relations and digital campaign content aligned with the UN Sustainable Development Goals.",
-        "award1.role": "Content Creator • Strategist • Presenter",
+        "award1.genChip": "SDGs Young Creator · Gen 1",
+        "award1.desc": "Selected for Generation 1 of the SDGs Young Creator program by the UN Global Compact Network Thailand — learning directly from sustainability practitioners through hands-on media workshops, then applying that training in the field with team Gangstaboy_IM to produce the article and video \"Net Zero: Building a Sustainable Society Starts With Us,\" encouraging everyday actions like saving energy, using clean energy, sorting waste, cutting plastic use, and planting trees.",
+        "award1.role": "Content Creator • Strategist • Presenter (SDGs Young Creator — Gen 1)",
         "award1.task": "Designed awareness media, campaign visuals, communication strategy, and presentation flow.",
         "award1.skills": "Creative Thinking, Marketing, Public Speaking, Branding",
-        "award1.result": "Generated strong engagement and received multiple awards.",
+        "award1.result": "Won Top Content and 2nd Place with strong audience engagement. As an SDGs Young Creator Gen 1 alumnus, I'd invite anyone interested to join the program next year and learn the UN's approach to sustainable development first-hand — because sustainability only happens when everyone works together, and building a sustainable society starts with each of us.",
+        "award1.quote": "<em>\"A voice from us, toward sustainability.\"</em><br><br>We loved the concept of this program — encouraging young people to care about sustainability and become the voice that invites other youths to learn about it too. We also got to apply what we learned in the real-media workshops directly out in the field, from writing the article to producing the video.<br><br>— Team Gangstaboy_IM",
         "award1.preview1": "Created sustainability media.",
         "award1.preview2": "High engagement campaign.",
         "award1.preview3": "Won multiple awards.",
         "award2.tag": "2nd Place",
-        "award2.desc": "Chosen as department representative for storytelling competition.",
-        "award2.role": "Representative • Public Speaker",
-        "award2.task": "Prepared script, practiced timing, managed audience interaction.",
-        "award2.skills": "Confidence, Humor Delivery, Stage Presence, Communication",
-        "award2.result": "Won 2nd place and represented department successfully.",
-        "award2.preview1": "Represented department.",
-        "award2.preview2": "Strong stage delivery.",
+        "award2.desc": "Chosen as the representative from his Thai-speaking skills class for a school-wide comedy storytelling competition, competing against representatives from every grade level.",
+        "award2.role": "Class Representative • Storyteller • Public Speaker",
+        "award2.task": "Wrote and performed a comedic storytelling piece about his childhood pet, \"Shrimp,\" preparing the script, practicing comedic timing, and managing audience interaction.",
+        "award2.skills": "Confidence, Comedic Storytelling, Stage Presence, Communication",
+        "award2.result": "Won 2nd place school-wide with the story of his childhood pet \"Shrimp,\" representing his class successfully against every grade level.",
+        "award2.preview1": "Chosen to represent his Thai-speaking class.",
+        "award2.preview2": "Told the comedic story of his childhood pet, \"Shrimp.\"",
+        "award2.preview3": "Competed against every grade level school-wide.",
         "award3.tag": "President & Organizer",
         "award3.desc": "Led planning and execution of school esports event.",
         "award3.role": "President • Organizer • Producer",
@@ -842,14 +934,14 @@ window.I18N_PAGE = {
         "award4.result": "Finished 2nd place with strong support.",
         "award4.preview1": "Student-focused campaign.",
         "award4.preview2": "Strong community support.",
-        "act1.tag": "[Role] · [YEAR — YEAR]",
-        "act1.desc": "[Description of the club or organization and what it does.]",
-        "act1.role": "[Role] — [School/University Name]",
-        "act1.task": "[Coordinated with faculty, sponsors, or peers to deliver the outcome.]",
-        "act1.skills": "Leadership, Communication, Project Management",
-        "act1.result": "[Outcome or impact of the activity.]",
-        "act1.preview1": "[Led a team of X members to plan and run Y event.]",
-        "act1.preview2": "[Coordinated with faculty, sponsors, or peers.]",
+        "act1.tag": "Certificate of Recognition · Aug 2026",
+        "act1.desc": "Awarded a certificate of recognition by the school's administration for serving as UX/UI Designer and 3D Modeler, and for building the game environment and gameplay systems (Builder & Gameplay Designer) on the SPSMVERSE — Roblox project, a collaboration with the school's Discipline, Law & Corporate Communications Department.",
+        "act1.role": "UX/UI Designer • 3D Modeler • Builder & Gameplay Designer",
+        "act1.task": "Designed the in-game environment and player experience flow, modeled 3D assets, and built gameplay systems and mechanics inside Roblox Studio.",
+        "act1.skills": "Roblox Studio, UX/UI Design, 3D Modeling, Gameplay Design, Level Design",
+        "act1.result": "Publicly recognized by the school's vice director for creativity and the systematic, well-organized execution of the in-game experience and gameplay systems.",
+        "act1.preview1": "UX/UI & 3D design for a school Roblox world.",
+        "act1.preview2": "Built gameplay systems in Roblox Studio.",
         "act2.tag": "[Result] · [YEAR]",
         "act2.desc": "[Description of the hackathon or competition and the challenge tackled.]",
         "act2.role": "[Team Name / Category]",
@@ -858,13 +950,14 @@ window.I18N_PAGE = {
         "act2.result": "[Placed X out of Y teams building a prototype for Z in 24–48 hours.]",
         "act2.preview1": "[Placed X out of Y teams building a prototype for Z.]",
         "act2.preview2": "[Owned a specific part of the build.]",
-        "act3.tag": "[Organization Name]",
-        "act3.desc": "[Description of the volunteer work or community involvement.]",
-        "act3.role": "[Role] — [Organization Name]",
-        "act3.task": "[Ongoing responsibilities or contributions.]",
-        "act3.skills": "Community Engagement, Reliability",
-        "act3.result": "[Impact of the ongoing volunteer work.]",
-        "act3.preview1": "[Ongoing community involvement or volunteer work.]",
+        "act3.tag": "Student Volunteer · Apr 2025",
+        "act3.desc": "Volunteered with the M.5 IM team to run \"Creative Rush,\" a summer welcome activity for incoming M.4 students, designed to build creative-thinking skills — a core part of the IM major — while giving new students an early, friendly introduction to their seniors.",
+        "act3.role": "Student Volunteer — IM Major",
+        "act3.task": "Helped plan and run creative-thinking activities and games for incoming students as part of the M.5 IM team.",
+        "act3.skills": "Event Facilitation, Teamwork, Creative Thinking, Mentorship",
+        "act3.result": "Gave incoming M.4 students a warm, creative first impression of the IM major and helped them bond with seniors.",
+        "act3.preview1": "Ran creative-thinking activities for incoming M.4 students.",
+        "act3.preview2": "Volunteered with the M.5 IM team.",
         "certs.heading": "EXTRA TRAINING & CERTIFICATIONS",
         "certs.count": "7 Certificates",
         "certs.group1": "Cybersecurity",
@@ -883,6 +976,9 @@ window.I18N_PAGE = {
         "cert.prevBtn": "‹ Prev",
         "cert.nextBtn": "Next ›",
         "modal.overview": "Overview",
+        "modal.readArticle": "Read Full Article",
+        "modal.testimonial": "Testimonial",
+        "modal.viewPost": "View Post ↗",
         "modal.myRole": "My Role",
         "modal.responsibilities": "Responsibilities",
         "modal.skillsDeveloped": "Skills Developed",
@@ -898,22 +994,25 @@ window.I18N_PAGE = {
         "filter.tech": "เทคโนโลยี",
         "filter.activities": "กิจกรรม",
         "award1.tag": "คอนเทนต์ยอดเยี่ยม & รองชนะเลิศอันดับ 2",
-        "award1.desc": "สร้างสรรค์เนื้อหาประชาสัมพันธ์และแคมเปญดิจิทัลที่สอดคล้องกับเป้าหมายการพัฒนาที่ยั่งยืนของสหประชาชาติ",
-        "award1.role": "ผู้สร้างสรรค์เนื้อหา • นักวางกลยุทธ์ • ผู้นำเสนอ",
+        "award1.genChip": "SDGs Young Creator · รุ่นที่ 1",
+        "award1.desc": "ได้รับคัดเลือกเข้าร่วมโครงการ SDGs Young Creator รุ่นที่ 1 (Gen 1) จัดโดย UN Global Compact Network Thailand ได้เรียนรู้จากผู้ปฏิบัติงานจริงด้านความยั่งยืนผ่านเวิร์กช็อปสื่อตัวจริง แล้วนำความรู้ไปลงสนามสร้างสรรค์ผลงานร่วมกับทีม Gangstaboy_IM ในบทความและคลิปวิดีโอ \"Net Zero สร้างสังคมที่ยั่งยืน เริ่มต้นที่ตัวเรา\" ที่ชวนทุกคนลงมือทำเรื่องความยั่งยืนได้เองตั้งแต่วันนี้ เช่น การประหยัดพลังงาน การใช้พลังงานสะอาด การคัดแยกขยะ การลดใช้พลาสติก และการปลูกต้นไม้เพิ่มพื้นที่สีเขียว",
+        "award1.role": "ผู้สร้างสรรค์เนื้อหา • นักวางกลยุทธ์ • ผู้นำเสนอ (SDGs Young Creator รุ่นที่ 1)",
         "award1.task": "ออกแบบสื่อรณรงค์ ภาพประกอบแคมเปญ กลยุทธ์การสื่อสาร และลำดับการนำเสนอ",
         "award1.skills": "ความคิดสร้างสรรค์, การตลาด, การพูดในที่สาธารณะ, การสร้างแบรนด์",
-        "award1.result": "สร้างการมีส่วนร่วมสูงและได้รับรางวัลหลายรายการ",
+        "award1.result": "ได้รับรางวัล Top Content และรองชนะเลิศอันดับ 2 พร้อมสร้างการมีส่วนร่วมสูงจากผู้ชม และในฐานะรุ่นพี่ SDGs Young Creator รุ่นที่ 1 อยากชวนน้อง ๆ ที่สนใจมาร่วมเรียนรู้แนวทางการพัฒนาอย่างยั่งยืนตามหลักการของสหประชาชาติในปีต่อไป เพราะ \"ความยั่งยืนจะเกิดขึ้นได้ก็ต่อเมื่อทุกคน ทุกฝ่ายร่วมมือกันอย่างจริงจัง การสร้างสังคมที่ยั่งยืน เริ่มต้นที่ตัวเรา\"",
+        "award1.quote": "<em>“กระบอกเสียงจากเรา สู่ความยั่งยืน”</em><br><br>ประทับใจในคอนเซ็ปต์ของกิจกรรม ที่ส่งเสริมให้เยาวชนหันมาใส่ใจด้านความยั่งยืน และเป็นกระบอกเสียงเชิญชวนให้กับเยาวชนด้วยกันเองให้รับรู้เรื่องของความยั่งยืน นอกจากนี้ยังนำความรู้ที่ได้รับจากกิจกรรมเวิร์กช็อปสื่อตัวจริง ไปใช้สำหรับการสร้างสรรค์ชิ้นงานในวันลงสนามจริงอีกด้วย เช่น การเขียนบทความ และการจัดทำคลิปวิดีโอ<br><br>— ทีม Gangstaboy_IM",
         "award1.preview1": "สร้างสื่อด้านความยั่งยืน",
         "award1.preview2": "แคมเปญที่มีการมีส่วนร่วมสูง",
         "award1.preview3": "ได้รับรางวัลหลายรายการ",
         "award2.tag": "รองชนะเลิศอันดับ 2",
-        "award2.desc": "ได้รับเลือกเป็นตัวแทนภาควิชาในการแข่งขันเล่าเรื่อง",
-        "award2.role": "ตัวแทน • ผู้พูดในที่สาธารณะ",
-        "award2.task": "เตรียมบทพูด ฝึกซ้อมจังหวะเวลา และบริหารการมีปฏิสัมพันธ์กับผู้ชม",
+        "award2.desc": "ได้รับคัดเลือกให้เป็นตัวแทนจากชั้นเรียนทักษะภาษาไทย เข้าร่วมการแข่งขันเล่าเรื่องตลก (Storytelling Comedy) ระดับโรงเรียน โดยแข่งขันร่วมกับตัวแทนจากทุกระดับชั้น",
+        "award2.role": "ตัวแทนชั้นเรียน • นักเล่าเรื่อง • ผู้พูดในที่สาธารณะ",
+        "award2.task": "เขียนบทและแสดงเรื่องเล่าตลกเกี่ยวกับสัตว์เลี้ยงในวัยเด็กของตัวเอง ชื่อ “กุ้ง” พร้อมเตรียมบท ฝึกจังหวะมุกตลก และบริหารการมีปฏิสัมพันธ์กับผู้ชม",
         "award2.skills": "ความมั่นใจ, การเล่าเรื่องตลก, บุคลิกบนเวที, การสื่อสาร",
-        "award2.result": "ได้รับรางวัลรองชนะเลิศอันดับ 2 และเป็นตัวแทนภาควิชาได้สำเร็จ",
-        "award2.preview1": "เป็นตัวแทนภาควิชา",
-        "award2.preview2": "การนำเสนอบนเวทีที่แข็งแกร่ง",
+        "award2.result": "คว้ารางวัลรองชนะเลิศอันดับ 2 ระดับโรงเรียน จากเรื่องเล่าสัตว์เลี้ยงในวัยเด็ก “กุ้ง” เป็นตัวแทนชั้นเรียนได้อย่างสำเร็จท่ามกลางตัวแทนจากทุกระดับชั้น",
+        "award2.preview1": "ได้รับเลือกเป็นตัวแทนชั้นเรียนภาษาไทย",
+        "award2.preview2": "เล่าเรื่องตลกเกี่ยวกับสัตว์เลี้ยงวัยเด็ก “กุ้ง”",
+        "award2.preview3": "แข่งขันร่วมกับตัวแทนจากทุกระดับชั้นทั่วโรงเรียน",
         "award3.tag": "ประธานและผู้จัดงาน",
         "award3.desc": "นำการวางแผนและดำเนินงานอีเวนต์อีสปอร์ตของโรงเรียน",
         "award3.role": "ประธาน • ผู้จัดงาน • โปรดิวเซอร์",
@@ -931,14 +1030,14 @@ window.I18N_PAGE = {
         "award4.result": "จบด้วยอันดับรองชนะเลิศอันดับ 2 พร้อมแรงสนับสนุนที่แข็งแกร่ง",
         "award4.preview1": "แคมเปญที่มุ่งเน้นนักเรียน",
         "award4.preview2": "การสนับสนุนจากชุมชนที่แข็งแกร่ง",
-        "act1.tag": "[ตำแหน่ง] · [ปี — ปี]",
-        "act1.desc": "[คำอธิบายเกี่ยวกับชมรมหรือองค์กรและหน้าที่ของกิจกรรมนี้]",
-        "act1.role": "[ตำแหน่ง] — [ชื่อโรงเรียน/มหาวิทยาลัย]",
-        "act1.task": "[ประสานงานกับอาจารย์ ผู้สนับสนุน หรือเพื่อนร่วมทีมเพื่อให้ได้ผลลัพธ์]",
-        "act1.skills": "ภาวะผู้นำ, การสื่อสาร, การบริหารโครงการ",
-        "act1.result": "[ผลลัพธ์หรือผลกระทบของกิจกรรม]",
-        "act1.preview1": "[นำทีมสมาชิก X คน วางแผนและจัดกิจกรรม Y]",
-        "act1.preview2": "[ประสานงานกับอาจารย์ ผู้สนับสนุน หรือเพื่อนร่วมทีม]",
+        "act1.tag": "เกียรติบัตร · สิงหาคม 2569",
+        "act1.desc": "ได้รับเกียรติบัตรจากผู้บริหารโรงเรียน ในฐานะผู้ออกแบบ UX/UI และแบบจำลองสามมิติ (3D Modeler) รวมถึงพัฒนาสภาพแวดล้อมและระบบการเล่นภายในเกม (Builder & Gameplay Designer) ในโครงการ SPSMVERSE - Roblox ร่วมกับฝ่ายวินัยกฎหมายและสื่อสารองค์กรของโรงเรียน",
+        "act1.role": "นักออกแบบ UX/UI • นักสร้างแบบจำลองสามมิติ • Builder & Gameplay Designer",
+        "act1.task": "ออกแบบสภาพแวดล้อมภายในเกมและประสบการณ์ผู้เล่น สร้างแบบจำลองสามมิติ และพัฒนาระบบกลไกการเล่นภายใน Roblox Studio",
+        "act1.skills": "Roblox Studio, การออกแบบ UX/UI, การสร้างแบบจำลองสามมิติ, การออกแบบเกมเพลย์, การออกแบบด่าน",
+        "act1.result": "โดดเด่นด้านการออกแบบประสบการณ์สภาพแวดล้อมและระบบการเล่น สะท้อนถึงความคิดสร้างสรรค์และการจัดการองค์ประกอบภายในเกมอย่างเป็นระบบ ได้รับการมอบเกียรติบัตรจากรองผู้อำนวยการฝ่ายวินัยกฎหมายและสื่อสารองค์กร",
+        "act1.preview1": "ออกแบบ UX/UI และงาน 3D ให้โลก Roblox ของโรงเรียน",
+        "act1.preview2": "พัฒนาระบบเกมเพลย์ใน Roblox Studio",
         "act2.tag": "[ผลการแข่งขัน] · [ปี]",
         "act2.desc": "[คำอธิบายเกี่ยวกับแฮกกาธอนหรือการแข่งขันและโจทย์ที่ทำ]",
         "act2.role": "[ชื่อทีม / ประเภทการแข่งขัน]",
@@ -947,13 +1046,14 @@ window.I18N_PAGE = {
         "act2.result": "[ได้อันดับ X จาก Y ทีม จากการสร้างต้นแบบ Z ภายใน 24–48 ชั่วโมง]",
         "act2.preview1": "[ได้อันดับ X จาก Y ทีม จากการสร้างต้นแบบ Z]",
         "act2.preview2": "[รับผิดชอบส่วนหนึ่งของการพัฒนา]",
-        "act3.tag": "[ชื่อองค์กร]",
-        "act3.desc": "[คำอธิบายเกี่ยวกับงานอาสาสมัครหรือการมีส่วนร่วมในชุมชน]",
-        "act3.role": "[ตำแหน่ง] — [ชื่อองค์กร]",
-        "act3.task": "[ความรับผิดชอบหรือการมีส่วนร่วมอย่างต่อเนื่อง]",
-        "act3.skills": "การมีส่วนร่วมกับชุมชน, ความรับผิดชอบ",
-        "act3.result": "[ผลกระทบของงานอาสาสมัครที่ดำเนินอยู่]",
-        "act3.preview1": "[การมีส่วนร่วมในชุมชนหรืองานอาสาสมัครที่ยังดำเนินอยู่]",
+        "act3.tag": "จิตอาสานักเรียน · เมษายน 2568",
+        "act3.desc": "เข้าร่วมเป็นจิตอาสากับพี่ ๆ ม.5 วิชาเอก IM จัดกิจกรรม “Creative Rush” ให้น้อง ๆ ม.4 ร่วมสนุกกันในช่วง Summer เพื่อเสริมทักษะความคิดสร้างสรรค์ ซึ่งเป็นหนึ่งในทักษะสำคัญของวิชาเอก IM และเป็นโอกาสให้น้อง ๆ ได้ทำความรู้จักกับพี่ ๆ",
+        "act3.role": "จิตอาสานักเรียน — วิชาเอก IM",
+        "act3.task": "ร่วมวางแผนและดำเนินกิจกรรมเสริมความคิดสร้างสรรค์และเกมต่าง ๆ ให้น้อง ๆ ในนามทีม ม.5 IM",
+        "act3.skills": "การจัดกิจกรรม, การทำงานเป็นทีม, ความคิดสร้างสรรค์, การเป็นพี่เลี้ยง",
+        "act3.result": "สร้างความประทับใจแรกที่อบอุ่นและสร้างสรรค์ให้น้อง ๆ ม.4 ต่อวิชาเอก IM พร้อมกระชับความสัมพันธ์ระหว่างรุ่นพี่รุ่นน้อง",
+        "act3.preview1": "จัดกิจกรรมเสริมความคิดสร้างสรรค์ให้น้อง ๆ ม.4",
+        "act3.preview2": "ร่วมเป็นจิตอาสากับทีม ม.5 IM",
         "certs.heading": "การอบรมเพิ่มเติมและใบรับรอง",
         "certs.count": "7 ใบรับรอง",
         "certs.group1": "ความปลอดภัยไซเบอร์",
@@ -972,6 +1072,9 @@ window.I18N_PAGE = {
         "cert.prevBtn": "‹ ก่อนหน้า",
         "cert.nextBtn": "ถัดไป ›",
         "modal.overview": "ภาพรวม",
+        "modal.readArticle": "อ่านบทความฉบับเต็ม",
+        "modal.testimonial": "คำบอกเล่าจากทีม",
+        "modal.viewPost": "ดูโพสต์ต้นฉบับ ↗",
         "modal.myRole": "บทบาทของฉัน",
         "modal.responsibilities": "ความรับผิดชอบ",
         "modal.skillsDeveloped": "ทักษะที่พัฒนา",
@@ -1025,7 +1128,7 @@ card.classList.toggle("hide", !card.classList.contains(type));
 }
 
 /* Award Modal Logic */
-function openAward(title,tag,image,desc,role,task,skills,result){
+function openAward(title,tag,image,desc,role,task,skills,result,link,articleLink,quote){
 document.getElementById("awardTitle").innerText=title;
 document.getElementById("awardTag").innerText=tag;
 document.getElementById("awardDesc").innerText=desc;
@@ -1033,8 +1136,50 @@ document.getElementById("awardRole").innerText=role;
 document.getElementById("awardTask").innerText=task;
 document.getElementById("awardResult").innerText=result;
 
-document.getElementById("awardImage").innerHTML =
-`<img src="${image}" onerror="this.remove();document.getElementById('awardImage').innerHTML='AWARD IMAGE';">`;
+const imgEl = document.getElementById("awardImage");
+const linkFallback = document.getElementById("awardLinkFallback");
+imgEl.style.display = "flex";
+imgEl.innerHTML = "";
+linkFallback.style.display = "none";
+
+const imgTag = document.createElement("img");
+imgTag.src = image;
+imgTag.onerror = function(){
+imgEl.style.display = "none";
+if(link){
+linkFallback.href = link;
+linkFallback.style.display = "inline-flex";
+}
+};
+imgEl.appendChild(imgTag);
+
+if(link){
+const badge = document.createElement("span");
+badge.className = "hero-link-badge";
+badge.textContent = T("modal.viewPost");
+imgEl.appendChild(badge);
+imgEl.classList.add("clickable");
+imgEl.onclick = function(){ window.open(link, "_blank", "noopener"); };
+}else{
+imgEl.classList.remove("clickable");
+imgEl.onclick = null;
+}
+
+const articleEl = document.getElementById("awardArticleLink");
+if(articleLink){
+articleEl.href = articleLink;
+articleEl.style.display = "inline-flex";
+}else{
+articleEl.style.display = "none";
+}
+
+const quoteSection = document.getElementById("awardQuoteSection");
+if(quote){
+document.getElementById("awardQuote").innerHTML = quote;
+quoteSection.style.display = "block";
+}else{
+quoteSection.style.display = "none";
+}
 
 let html="";
 skills.split(",").forEach(skill=>{

@@ -3,7 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | KUSON WANARATMONGKOL</title>
+<title>Projects | Kuson Wanaratmongkol</title>
+<meta name="description" content="Selected projects by Kuson Wanaratmongkol (กุศล วนารัตน์มงคล) — from the Cave Heist VR exhibition built with Unity and a phone gyroscope, to client websites, an AI news aggregator, and internal booking systems.">
+<meta name="author" content="Kuson Wanaratmongkol">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://kusonportfolio.netlify.app/projects.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kusonportfolio.netlify.app/projects.html">
+<meta property="og:site_name" content="Kuson Wanaratmongkol — Portfolio">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="th_TH">
+<meta property="og:title" content="Projects | Kuson Wanaratmongkol">
+<meta property="og:description" content="Cave Heist VR exhibition, client websites, an AI news aggregator, and internal booking systems.">
+<meta property="og:image" content="https://kusonportfolio.netlify.app/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kuson Wanaratmongkol — Portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Projects | Kuson Wanaratmongkol">
+<meta name="twitter:description" content="Cave Heist VR exhibition, client websites, an AI news aggregator, and internal booking systems.">
+<meta name="twitter:image" content="https://kusonportfolio.netlify.app/images/og-cover.jpg">
+<meta name="twitter:image:alt" content="Kuson Wanaratmongkol — Portfolio">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "name": "Projects | Kuson Wanaratmongkol",
+      "url": "https://kusonportfolio.netlify.app/projects.html",
+      "description": "Selected projects by Kuson Wanaratmongkol (กุศล วนารัตน์มงคล).",
+      "isPartOf": { "@id": "https://kusonportfolio.netlify.app/#website" },
+      "about": { "@id": "https://kusonportfolio.netlify.app/#person" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kusonportfolio.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://kusonportfolio.netlify.app/projects.html" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -194,6 +237,7 @@
             <div class="row-chips">
                 <span class="chip">Unity</span>
                 <span class="chip">VR Cardboard</span>
+                <span class="chip">Gyroscope</span>
             </div>
             <p class="row-summary" data-i18n="row1.summary">Interactive VR showcase experience designed for high engagement.</p>
         </div>
@@ -331,7 +375,7 @@ window.I18N_PAGE = {
         "header.title": "Selected<br>Projects",
         "header.subtext": "A collection of digital experiences, bridging the gap between creativity and technical execution.",
         "badge.flagship": "Flagship",
-        "row1.summary": "Interactive VR showcase experience designed for high engagement.",
+        "row1.summary": "Interactive VR showcase experience I hosted and built for Open House, blending Unity with a phone's gyroscope and a controller.",
         "row2.summary": "A high-end personal platform featuring cinematic motion effects.",
         "row3.summary": "Developing digital identities for professional organizations.",
         "row4.summary": "Streamlining management through automated reservation logic.",
@@ -358,7 +402,7 @@ window.I18N_PAGE = {
         "header.title": "ผลงาน<br>ที่คัดสรร",
         "header.subtext": "คอลเลกชันประสบการณ์ดิจิทัลที่เชื่อมช่องว่างระหว่างความคิดสร้างสรรค์และการปฏิบัติงานเชิงเทคนิค",
         "badge.flagship": "ผลงานเด่น",
-        "row1.summary": "ประสบการณ์ VR แบบอินเทอร์แอกทีฟที่ออกแบบมาเพื่อสร้างการมีส่วนร่วมสูง",
+        "row1.summary": "ประสบการณ์ VR ที่ผมเป็นเจ้าภาพและพัฒนาเองสำหรับงาน Open House ผสาน Unity เข้ากับ Gyroscope มือถือและคอนโทรลเลอร์",
         "row2.summary": "แพลตฟอร์มส่วนตัวระดับไฮเอนด์ที่มีเอฟเฟกต์การเคลื่อนไหวสไตล์ภาพยนตร์",
         "row3.summary": "พัฒนาอัตลักษณ์ดิจิทัลสำหรับองค์กรมืออาชีพ",
         "row4.summary": "เพิ่มประสิทธิภาพการบริหารจัดการด้วยระบบจองอัตโนมัติ",
@@ -392,10 +436,10 @@ function T(key) {
     const PROJECTS = [
         {
             title: "Cave Heist – VR Exhibition",
-            chips: ["Unity", "VR Cardboard"],
+            chips: ["Unity", "VR Cardboard", "Gyroscope"],
             hero: "images/cave-main.jpg",
-            desc: { en: "Immersive VR exhibition game built for Open House 2026. Designed to attract visitors and demonstrate innovation.", th: "เกม VR สำหรับงานเปิดบ้าน Open House 2026 ออกแบบมาเพื่อดึงดูดผู้เข้าชมและแสดงศักยภาพด้านนวัตกรรม" },
-            role: { en: "Team Leader • Developer", th: "หัวหน้าทีม • นักพัฒนา" },
+            desc: { en: "As the host for Open House, I wanted to bring something new — inspired by a school trip to a VR Center in M.6, I adapted Unity's VR camera system together with a mobile phone's gyroscope and a game controller to recreate that VR feeling on a small scale for my own project. After sharing it, the project became one of the IM Academic's most popular pieces of content, drawing 100+ likes and over a thousand views on the IM Academic Open House Instagram post.", th: "ในฐานะพิธีกร/เจ้าภาพกิจกรรม Open House ผมอยากสร้างสิ่งใหม่ ๆ โดยได้แรงบันดาลใจจากทริปทัศนศึกษา VR Center ตอน ม.6 จึงนำระบบกล้อง VR ของ Unity มาผสมกับ Gyroscope ของมือถือและจอยคอนโทรลเลอร์ เพื่อจำลองความรู้สึกเหมือนเล่น VR จริงในสเกลเล็ก ๆ ให้กับโปรเจกต์ของตัวเอง หลังจากประชาสัมพันธ์โปรเจกต์นี้ กลายเป็นหนึ่งในคอนเทนต์ที่ได้รับความนิยมมากที่สุดของวิชาเอก IM มียอดไลก์กว่า 100 ครั้ง และยอดวิวหลักพันบนโพสต์ Open House ของ IG วิชาเอก IM" },
+            role: { en: "Event Host • Team Leader • Developer", th: "พิธีกร/เจ้าภาพกิจกรรม • หัวหน้าทีม • นักพัฒนา" },
             gallery: ["images/cave1.jpg", "images/cave2.jpg"]
         },
         {
@@ -492,13 +536,15 @@ function T(key) {
         document.getElementById("modalDesc").innerText = project.desc[lang];
         document.getElementById("modalRole").innerText = project.role[lang];
 
-        document.getElementById("heroImage").innerHTML = `<img src="${project.hero}" class="w-full h-full object-cover" onerror="this.remove();">`;
+        const heroEl = document.getElementById("heroImage");
+        heroEl.style.display = "flex";
+        heroEl.innerHTML = `<img src="${project.hero}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none';">`;
 
         let galleryHTML = "";
         project.gallery.forEach(src => {
             galleryHTML += `
                 <div class="aspect-video bg-white/5 rounded-xl border border-white/10 overflow-hidden">
-                    <img src="${src}" class="w-full h-full object-cover" onerror="this.remove();">
+                    <img src="${src}" class="w-full h-full object-cover" onerror="this.parentElement.remove();">
                 </div>`;
         });
         document.getElementById("gallery").innerHTML = galleryHTML;

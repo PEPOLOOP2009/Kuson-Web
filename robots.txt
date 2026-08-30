@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kusonportfolio.netlify.app/sitemap.xml
