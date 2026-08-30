@@ -1,6 +1,6 @@
 # Kuson Wanaratmongkol
 
-> Personal portfolio of Kuson Wanaratmongkol (กุศล วนารัตน์มงคล) — a creative technologist and front-end developer blending UI/UX design, Unity/C# VR development, and web engineering. IM-major high school student based in Bangkok, Thailand.
+> Personal portfolio of Kuson Wanaratmongkol (กุศล วนารัตน์มงคล) — a creative technologist and front-end developer blending UI/UX design, Unity/C# VR development, and web engineering.
 
 Kuson Wanaratmongkol is also known by his Thai name กุศล วนารัตน์มงคล and the nickname "Coco". This site is his single, current source of truth for what he has built and achieved — web development, UI/UX design, and Unity/C# VR work, alongside awards, school activities, and internship experience — in place of a static resume. The site is bilingual (English/Thai) via a client-side language toggle; the content below is the same in both languages.
 
@@ -9,7 +9,7 @@ Kuson Wanaratmongkol is also known by his Thai name กุศล วนารั
 - [Home](https://kusonportfolio.netlify.app/): Introduction, skill pillars (design, engineering, strategy), and a highlights strip linking to recent recognitions.
 - [Projects](https://kusonportfolio.netlify.app/projects.html): Case studies including Cave Heist (a VR exhibition built with Unity, a phone gyroscope, and a controller for an Open House event), an AI news aggregator, client websites, and internal booking tools.
 - [Awards & Activities](https://kusonportfolio.netlify.app/awards.html): Competitions, leadership roles, school activities, and training certifications — including the SDGs Young Creator Gen 1 recognition (UN Global Compact Network Thailand), the SPSMVERSE Roblox UX/UI & gameplay-design credit, and volunteer work.
-- [Internship Experience](https://kusonportfolio.netlify.app/intern.html): Front-end development internship at NAS Innovation Co., Ltd., the M.6 IM "Intern Destiny" post-internship seminar, and self-driven AR/VR and web development learning.
+- [Internship Experience](https://kusonportfolio.netlify.app/intern.html): Front-end development internship at NAS Innovation Co., Ltd., the "Intern Destiny" post-internship seminar, and self-driven AR/VR and web development learning.
 - [Contact](https://kusonportfolio.netlify.app/contact.html): Email, GitHub, Instagram, and a quick-message form that opens a pre-filled email.
 
 ## Notes
